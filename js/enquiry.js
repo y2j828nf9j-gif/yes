@@ -55,7 +55,7 @@
     ["Goals", [
       ["goals", "Goals"], ["goal_detail", "Goal in their words"], ["goal_why", "Why now"],
       ["timeframe", "Timeframe"], ["sessions_wanted", "Sessions wanted"],
-      ["availability", "Availability"]
+      ["package_interest", "Package interest"], ["availability", "Availability"]
     ]],
     ["Nutrition & lifestyle", [
       ["meals_per_day", "Meals per day"], ["water", "Water"], ["tracking", "Tracks food"],
@@ -385,6 +385,7 @@
       contact_method: data.contact_method,
       social_handle: data.social_handle || "N/A",
       goals: data.goals || "",
+      package_interest: data.package_interest || "Not sure — recommend one",
       parq_status: flagged ? "FLAGGED: GP clearance may be required" : "All clear",
       checklist: checklistText(items),
       submitted_at: new Date().toLocaleString("en-GB"),

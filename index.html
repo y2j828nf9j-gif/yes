@@ -16,14 +16,17 @@
 
   <header class="site-header">
     <div class="container nav-wrap">
-      <a href="index.html" class="logo" aria-label="KnowledgeGainzz home">Knowledge<span>Gainzz</span></a>
+      <a href="index.html" class="logo" aria-label="KnowledgeGainzz home">
+        <img src="assets/logo.jpg" alt="" class="logo-img">
+        Knowledge<span>Gainzz</span>
+      </a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
       <nav id="site-nav" class="site-nav">
         <a href="#about">About</a>
         <a href="#how">How it works</a>
-        <a href="#services">Coaching</a>
+        <a href="#pricing">Pricing</a>
         <a href="#location">Location</a>
         <a href="enquire.html" class="btn btn-sm">Enquire</a>
       </nav>
@@ -35,11 +38,11 @@
     <section class="hero">
       <div class="container hero-inner">
         <p class="eyebrow">NASM-certified personal trainer &middot; PureGym Giltbrook</p>
-        <h1 class="hero-title">Knowledge first.<br><span>Gainz follow.</span></h1>
+        <h1 class="hero-title">Knowledge that<br>creates <span>gains.</span></h1>
         <p class="hero-sub">Coaching that teaches you <em>why</em> as well as <em>what</em>. Training, nutrition and habits built around you, so the results stick after we finish.</p>
         <div class="hero-actions">
           <a href="enquire.html" class="btn btn-lg">Start your enquiry</a>
-          <a href="#how" class="btn btn-ghost btn-lg">How it works</a>
+          <a href="#pricing" class="btn btn-ghost btn-lg">See pricing</a>
         </div>
         <ul class="hero-points">
           <li>Free consultation</li>
@@ -102,44 +105,205 @@
       </div>
     </section>
 
-    <!-- SERVICES -->
-    <section id="services" class="section">
+    <!-- PRICING -->
+    <section id="pricing" class="section">
       <div class="container">
         <div class="section-head reveal">
-          <p class="eyebrow">Coaching options</p>
-          <h2>Pick the support that fits your life</h2>
+          <p class="eyebrow">PT packages</p>
+          <h2>Flexible options. Real progress.</h2>
+          <p class="pricing-note">Every enquiry starts with a free consultation, no commitment</p>
         </div>
-        <div class="cards">
-          <article class="card reveal">
-            <h3>1-to-1 Personal Training</h3>
-            <p>In-person sessions at PureGym Giltbrook. Technique coaching, progressive programming and accountability every session.</p>
-            <ul class="ticks">
-              <li>Personalised programme</li>
-              <li>Form &amp; technique coaching</li>
-              <li>Progress check-ins</li>
+
+        <div class="pricing-grid">
+          <article class="price-card tier-bronze reveal">
+            <div class="price-head">
+              <div>
+                <h3 class="price-name">Bronze</h3>
+                <p class="price-tagline">Get started. Build momentum.</p>
+              </div>
+              <span class="price-icon" aria-hidden="true">&#127793;</span>
+            </div>
+            <ul class="price-features">
+              <li>2 &times; 1:1 PT sessions</li>
+              <li>Goal setting &amp; initial assessment</li>
+              <li>Personalised training plan</li>
+              <li>Technique coaching</li>
             </ul>
+            <div class="price-tag">
+              <span class="price-amount">&pound;75</span>
+              <span class="price-per">&pound;37.50 per session</span>
+            </div>
           </article>
-          <article class="card card-featured reveal">
-            <span class="card-tag">Most popular</span>
-            <h3>Training + Nutrition</h3>
-            <p>Everything in 1-to-1 training, plus nutrition targets and habit coaching that fit how you actually eat.</p>
-            <ul class="ticks">
-              <li>Calorie &amp; macro guidance</li>
-              <li>Weekly nutrition check-ins</li>
-              <li>Habit-based approach</li>
+
+          <article class="price-card tier-silver reveal">
+            <div class="price-head">
+              <div>
+                <h3 class="price-name">Silver</h3>
+                <p class="price-tagline">A stronger start.</p>
+              </div>
+              <span class="price-icon" aria-hidden="true">&#128200;</span>
+            </div>
+            <ul class="price-features">
+              <li>4 &times; 1:1 PT sessions</li>
+              <li>Personalised training plan</li>
+              <li>Basic nutrition guidance</li>
+              <li>Technique coaching</li>
             </ul>
+            <div class="price-tag">
+              <span class="price-amount">&pound;140</span>
+              <span class="price-per">&pound;35.00 per session</span>
+            </div>
           </article>
-          <article class="card reveal">
-            <h3>Programme Only</h3>
-            <p>Train on your own time with a programme written for you and explained by me, with regular reviews.</p>
-            <ul class="ticks">
-              <li>Custom training plan</li>
-              <li>Exercise video guidance</li>
-              <li>Monthly programme updates</li>
+
+          <article class="price-card tier-gold reveal">
+            <div class="price-head">
+              <div>
+                <h3 class="price-name">Gold</h3>
+                <p class="price-tagline">Consistency creates change.</p>
+              </div>
+              <span class="price-icon" aria-hidden="true">&#127942;</span>
+            </div>
+            <ul class="price-features">
+              <li>8 &times; 1:1 PT sessions</li>
+              <li>Personalised training plan</li>
+              <li>Technique coaching</li>
+              <li>Progress tracking (photos, metrics)</li>
             </ul>
+            <div class="price-tag">
+              <span class="price-amount">&pound;260</span>
+              <span class="price-per">&pound;32.50 per session</span>
+            </div>
+          </article>
+
+          <article class="price-card tier-platinum reveal">
+            <div class="price-head">
+              <div>
+                <h3 class="price-name">Platinum</h3>
+                <p class="price-tagline">Take it to the next level.</p>
+              </div>
+              <span class="price-icon" aria-hidden="true">&#128081;</span>
+            </div>
+            <ul class="price-features">
+              <li>12 &times; 1:1 PT sessions</li>
+              <li>Personalised training plan</li>
+              <li>Technique coaching</li>
+              <li>Progress tracking (photos, metrics)</li>
+            </ul>
+            <div class="price-tag">
+              <span class="price-amount">&pound;360</span>
+              <span class="price-per">&pound;30.00 per session</span>
+            </div>
+          </article>
+
+          <article class="price-card tier-diamond reveal">
+            <div class="price-head">
+              <div>
+                <h3 class="price-name">Diamond</h3>
+                <p class="price-tagline">The complete package.</p>
+              </div>
+              <span class="price-icon" aria-hidden="true">&#128142;</span>
+            </div>
+            <ul class="price-features">
+              <li>16 &times; 1:1 PT sessions</li>
+              <li>Personalised training plan</li>
+              <li>Technique coaching</li>
+              <li>Progress tracking (photos, metrics)</li>
+            </ul>
+            <div class="price-tag">
+              <span class="price-amount">&pound;400</span>
+              <span class="price-per">&pound;25.00 per session</span>
+            </div>
+          </article>
+
+          <article class="price-card tier-strength reveal">
+            <div class="price-head">
+              <div>
+                <h3 class="price-name">Strength</h3>
+                <p class="price-tagline">Build a stronger you.</p>
+              </div>
+              <span class="price-icon" aria-hidden="true">&#128170;</span>
+            </div>
+            <ul class="price-features">
+              <li>12 &times; 1:1 PT sessions</li>
+              <li>Strength-focused programming</li>
+              <li>Technique &amp; form coaching</li>
+              <li>Progress tracking</li>
+            </ul>
+            <div class="price-tag">
+              <span class="price-amount">&pound;330</span>
+              <span class="price-per">&pound;27.50 per session</span>
+            </div>
+          </article>
+
+          <article class="price-card tier-physique reveal">
+            <div class="price-head">
+              <div>
+                <h3 class="price-name">Physique</h3>
+                <p class="price-tagline">Look better. Feel better.</p>
+              </div>
+              <span class="price-icon" aria-hidden="true">&#127939;</span>
+            </div>
+            <ul class="price-features">
+              <li>12 &times; 1:1 PT sessions</li>
+              <li>Hypertrophy-focused programming</li>
+              <li>Technique coaching</li>
+              <li>Progress tracking</li>
+            </ul>
+            <div class="price-tag">
+              <span class="price-amount">&pound;330</span>
+              <span class="price-per">&pound;27.50 per session</span>
+            </div>
+          </article>
+
+          <article class="price-card tier-athlete reveal">
+            <div class="price-head">
+              <div>
+                <h3 class="price-name">Athlete</h3>
+                <p class="price-tagline">Perform better. Go further.</p>
+              </div>
+              <span class="price-icon" aria-hidden="true">&#127939;&#8205;&#9794;&#65039;</span>
+            </div>
+            <ul class="price-features">
+              <li>12 &times; 1:1 PT sessions</li>
+              <li>Performance-focused programming</li>
+              <li>Speed, power &amp; conditioning</li>
+              <li>Technique coaching</li>
+            </ul>
+            <div class="price-tag">
+              <span class="price-amount">&pound;330</span>
+              <span class="price-per">&pound;27.50 per session</span>
+            </div>
+          </article>
+
+          <article class="price-card tier-group reveal">
+            <div class="price-head">
+              <div>
+                <h3 class="price-name">Group Training</h3>
+                <p class="price-tagline">Train together. Achieve more.</p>
+              </div>
+              <span class="price-icon" aria-hidden="true">&#128101;</span>
+            </div>
+            <ul class="price-features">
+              <li>Small group sessions (2&ndash;4 people)</li>
+              <li>Tailored programming</li>
+              <li>Motivating group environment</li>
+              <li>All fitness levels welcome</li>
+            </ul>
+            <div class="price-tag">
+              <span class="price-amount">&pound;20</span>
+              <span class="price-per">per person, per session</span>
+            </div>
           </article>
         </div>
-        <p class="center muted reveal">Pricing is discussed at your free consultation. <a href="enquire.html">Enquire to find out more &rarr;</a></p>
+
+        <div class="pricing-perks reveal">
+          <div>Personalised training plans</div>
+          <div>Expert coaching</div>
+          <div>Progress tracking</div>
+          <div>All fitness levels welcome</div>
+        </div>
+
+        <p class="center muted reveal" style="margin-top: 32px;">Not sure which package is right for you? <a href="enquire.html">Start with a free consultation &rarr;</a></p>
       </div>
     </section>
 
@@ -182,7 +346,8 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p class="logo">Knowledge<span>Gainzz</span></p>
+      <img src="assets/logo.jpg" alt="KnowledgeGainzz" class="footer-logo-img">
+      <p class="logo" style="justify-content:center;">Knowledge<span>Gainzz</span></p>
       <p class="small muted">Personal training by Leo &middot; NASM CPT &middot; PureGym Giltbrook, Nottingham</p>
       <p class="small muted">
         <a data-email href="#">Email</a> &middot;
