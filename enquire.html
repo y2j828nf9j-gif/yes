@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Enquire | KnowledgeGainzz Personal Training</title>
+  <meta name="description" content="Start your personal training enquiry with Leo at KnowledgeGainzz. PAR-Q, goals, experience and nutrition in one quick form.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="page-enquire">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="index.html" class="logo" aria-label="KnowledgeGainzz home">Knowledge<span>Gainzz</span></a>
+      <nav class="site-nav site-nav-static">
+        <a href="index.html">&larr; Back to home</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="section">
+    <div class="container narrow">
+      <div class="form-intro">
+        <p class="eyebrow">Client enquiry</p>
+        <h1>Let's get you started</h1>
+        <p>Answer a few questions so I can plan your free consultation. A copy of your answers and your personal checklist will be emailed to you when you submit. Your progress saves on this device as you go.</p>
+      </div>
+
+      <div class="progress" aria-hidden="true">
+        <div class="progress-bar"><span id="progress-fill"></span></div>
+        <p id="progress-label" class="small muted">Step 1 of 6</p>
+      </div>
+
+      <form id="enquiry-form" class="enquiry-form" novalidate>
+        <!-- Honeypot for spam bots: real people never see this -->
+        <div class="hp" aria-hidden="true">
+          <label>Leave this empty <input type="text" name="company_website" tabindex="-1" autocomplete="off"></label>
+        </div>
+
+        <!-- STEP 1: CONTACT -->
+        <fieldset class="form-step is-active" data-step="1" data-title="Your details">
+          <legend>1. Your details</legend>
+          <div class="grid-2">
+            <div class="field">
+              <label for="full_name">Full name *</label>
+              <input id="full_name" name="full_name" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="age">Age *</label>
+              <input id="age" name="age" type="number" min="16" max="100" inputmode="numeric" required>
+              <p class="hint">You need to be 16 or over. Under-18s need parental consent.</p>
+            </div>
+            <div class="field">
+              <label for="email">Email *</label>
+              <input id="email" name="email" type="email" autocomplete="email" required>
+              <p class="hint">Your checklist is sent here.</p>
+            </div>
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel">
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="label">How should I contact you? *</span>
+            <div class="choice-row">
+              <label class="chip"><input type="radio" name="contact_method" value="Email" required checked> Email</label>
+              <label class="chip"><input type="radio" name="contact_method" value="Instagram"> Instagram DM</label>
+              <label class="chip"><input type="radio" name="contact_method" value="TikTok"> TikTok DM</label>
+              <label class="chip"><input type="radio" name="contact_method" value="Phone / text"> Phone / text</label>
+            </div>
+          </div>
+          <div class="field" data-show-when="contact_method" data-show-values="Instagram,TikTok">
+            <label for="social_handle">Your Instagram / TikTok username *</label>
+            <input id="social_handle" name="social_handle" type="text" placeholder="@yourname">
+          </div>
+          <div class="field">
+            <label for="heard_about">How did you hear about KnowledgeGainzz?</label>
+            <select id="heard_about" name="heard_about">
+              <option value="">Choose one</option>
+              <option>Instagram</option>
+              <option>TikTok</option>
+              <option>At PureGym Giltbrook</option>
+              <option>Friend / family</option>
+              <option>Google</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </fieldset>
+
+        <!-- STEP 2: PAR-Q -->
+        <fieldset class="form-step" data-step="2" data-title="Health (PAR-Q)">
+          <legend>2. Health questionnaire (PAR-Q)</legend>
+          <p class="muted">Please answer honestly. This keeps you safe and does not stop you training. A "yes" just means we may need a quick check with your GP first.</p>
+
+          <div class="parq">
+            <div class="parq-q">
+              <p>1. Has a doctor ever said you have a heart condition <strong>or</strong> high blood pressure?</p>
+              <div class="yn"><label><input type="radio" name="parq_1" value="Yes" required> Yes</label><label><input type="radio" name="parq_1" value="No"> No</label></div>
+            </div>
+            <div class="parq-q">
+              <p>2. Do you feel pain in your chest at rest, during daily activities, <strong>or</strong> when you do physical activity?</p>
+              <div class="yn"><label><input type="radio" name="parq_2" value="Yes" required> Yes</label><label><input type="radio" name="parq_2" value="No"> No</label></div>
+            </div>
+            <div class="parq-q">
+              <p>3. Do you lose balance because of dizziness, <strong>or</strong> have you lost consciousness in the last 12 months?</p>
+              <div class="yn"><label><input type="radio" name="parq_3" value="Yes" required> Yes</label><label><input type="radio" name="parq_3" value="No"> No</label></div>
+            </div>
+            <div class="parq-q">
+              <p>4. Have you ever been diagnosed with another chronic medical condition (e.g. diabetes, asthma, arthritis)?</p>
+              <div class="yn"><label><input type="radio" name="parq_4" value="Yes" required> Yes</label><label><input type="radio" name="parq_4" value="No"> No</label></div>
+            </div>
+            <div class="parq-q">
+              <p>5. Are you currently taking prescribed medication for a chronic medical condition?</p>
+              <div class="yn"><label><input type="radio" name="parq_5" value="Yes" required> Yes</label><label><input type="radio" name="parq_5" value="No"> No</label></div>
+            </div>
+            <div class="parq-q">
+              <p>6. Do you have, or have you had in the last 12 months, a bone, joint or soft-tissue problem (muscle, ligament, tendon) that could get worse with more activity?</p>
+              <div class="yn"><label><input type="radio" name="parq_6" value="Yes" required> Yes</label><label><input type="radio" name="parq_6" value="No"> No</label></div>
+            </div>
+            <div class="parq-q">
+              <p>7. Has a doctor ever said you should only do medically supervised physical activity?</p>
+              <div class="yn"><label><input type="radio" name="parq_7" value="Yes" required> Yes</label><label><input type="radio" name="parq_7" value="No"> No</label></div>
+            </div>
+            <div class="parq-q">
+              <p>8. Are you pregnant or have you given birth in the last 6 months?</p>
+              <div class="yn"><label><input type="radio" name="parq_8" value="Yes" required> Yes</label><label><input type="radio" name="parq_8" value="No"> No</label><label><input type="radio" name="parq_8" value="N/A"> N/A</label></div>
+            </div>
+          </div>
+
+          <div id="parq-flag" class="notice notice-warn" hidden>
+            <strong>Thanks for letting me know.</strong> Because you answered "yes" to at least one question, please give some details below. I may ask for a note from your GP before we start. It'll be on your checklist.
+          </div>
+          <div class="field" id="parq-details-field" hidden>
+            <label for="parq_details">Please give details (condition, medication, injury, dates) *</label>
+            <textarea id="parq_details" name="parq_details" rows="4"></textarea>
+          </div>
+          <div class="field">
+            <label for="injuries">Any other injuries, surgeries or health notes I should know about?</label>
+            <textarea id="injuries" name="injuries" rows="3" placeholder="e.g. old knee injury, lower-back tightness"></textarea>
+          </div>
+        </fieldset>
+
+        <!-- STEP 3: EXPERIENCE & ACTIVITY -->
+        <fieldset class="form-step" data-step="3" data-title="Experience & activity">
+          <legend>3. Experience &amp; current activity</legend>
+          <div class="field">
+            <span class="label">Training experience *</span>
+            <div class="choice-stack">
+              <label class="option"><input type="radio" name="experience_level" value="Complete beginner" required> <span><strong>Complete beginner</strong><small>New to the gym or not trained in years</small></span></label>
+              <label class="option"><input type="radio" name="experience_level" value="Some experience"> <span><strong>Some experience</strong><small>Trained on and off, under 1 year consistent</small></span></label>
+              <label class="option"><input type="radio" name="experience_level" value="Intermediate"> <span><strong>Intermediate</strong><small>1–3 years consistent training</small></span></label>
+              <label class="option"><input type="radio" name="experience_level" value="Advanced"> <span><strong>Advanced</strong><small>3+ years, comfortable with the main lifts</small></span></label>
+            </div>
+          </div>
+          <div class="field">
+            <label for="training_history">What training have you done before? What worked, and what didn't?</label>
+            <textarea id="training_history" name="training_history" rows="3" placeholder="e.g. did a bro split for 6 months, enjoyed it but plateaued"></textarea>
+          </div>
+          <div class="grid-2">
+            <div class="field">
+              <label for="current_sessions">How many times a week do you exercise now? *</label>
+              <select id="current_sessions" name="current_sessions" required>
+                <option value="">Choose one</option>
+                <option>0</option><option>1–2</option><option>3–4</option><option>5+</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="daily_activity">Day-to-day activity level *</label>
+              <select id="daily_activity" name="daily_activity" required>
+                <option value="">Choose one</option>
+                <option>Mostly sitting (desk job)</option>
+                <option>Lightly active (some walking)</option>
+                <option>Active (on my feet most of the day)</option>
+                <option>Very active (manual / physical job)</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="steps">Average daily steps (if you know)</label>
+              <input id="steps" name="steps" type="text" inputmode="numeric" placeholder="e.g. 6,000">
+            </div>
+            <div class="field">
+              <label for="sleep">Average sleep per night</label>
+              <select id="sleep" name="sleep">
+                <option value="">Choose one</option>
+                <option>Under 5 hours</option><option>5–6 hours</option><option>7–8 hours</option><option>8+ hours</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="current_activity">What does your current exercise look like?</label>
+            <textarea id="current_activity" name="current_activity" rows="3" placeholder="e.g. 2x gym (machines), 5-a-side on Sundays"></textarea>
+          </div>
+        </fieldset>
+
+        <!-- STEP 4: GOALS -->
+        <fieldset class="form-step" data-step="4" data-title="Goals">
+          <legend>4. Your goals</legend>
+          <div class="field">
+            <span class="label">Main goals (choose all that apply) *</span>
+            <div class="choice-row" data-group-required="goals">
+              <label class="chip"><input type="checkbox" name="goals" value="Fat loss"> Fat loss</label>
+              <label class="chip"><input type="checkbox" name="goals" value="Build muscle"> Build muscle</label>
+              <label class="chip"><input type="checkbox" name="goals" value="Get stronger"> Get stronger</label>
+              <label class="chip"><input type="checkbox" name="goals" value="Improve fitness"> Improve fitness</label>
+              <label class="chip"><input type="checkbox" name="goals" value="Confidence in the gym"> Gym confidence</label>
+              <label class="chip"><input type="checkbox" name="goals" value="Sport performance"> Sport performance</label>
+              <label class="chip"><input type="checkbox" name="goals" value="Health & mobility"> Health &amp; mobility</label>
+            </div>
+            <p class="error-msg" data-error-for="goals" hidden>Please pick at least one goal.</p>
+          </div>
+          <div class="field">
+            <label for="goal_detail">Describe your goal in your own words *</label>
+            <textarea id="goal_detail" name="goal_detail" rows="3" required placeholder="e.g. lose 8kg before my holiday in June and feel confident in the gym"></textarea>
+          </div>
+          <div class="field">
+            <label for="goal_why">Why does this matter to you right now?</label>
+            <textarea id="goal_why" name="goal_why" rows="2"></textarea>
+          </div>
+          <div class="grid-2">
+            <div class="field">
+              <label for="timeframe">Timeframe</label>
+              <select id="timeframe" name="timeframe">
+                <option value="">Choose one</option>
+                <option>1–3 months</option><option>3–6 months</option><option>6–12 months</option><option>Long-term lifestyle</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="sessions_wanted">Sessions per week with me</label>
+              <select id="sessions_wanted" name="sessions_wanted">
+                <option value="">Choose one</option>
+                <option>1</option><option>2</option><option>3+</option><option>Programme only</option><option>Not sure yet</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <span class="label">When can you usually train?</span>
+            <div class="choice-row">
+              <label class="chip"><input type="checkbox" name="availability" value="Early mornings"> Early mornings</label>
+              <label class="chip"><input type="checkbox" name="availability" value="Daytime"> Daytime</label>
+              <label class="chip"><input type="checkbox" name="availability" value="Evenings"> Evenings</label>
+              <label class="chip"><input type="checkbox" name="availability" value="Weekends"> Weekends</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- STEP 5: NUTRITION -->
+        <fieldset class="form-step" data-step="5" data-title="Nutrition">
+          <legend>5. Nutrition &amp; lifestyle</legend>
+          <div class="grid-2">
+            <div class="field">
+              <label for="meals_per_day">Meals per day *</label>
+              <select id="meals_per_day" name="meals_per_day" required>
+                <option value="">Choose one</option>
+                <option>1–2</option><option>3</option><option>4+</option><option>It varies a lot</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="water">Water per day</label>
+              <select id="water" name="water">
+                <option value="">Choose one</option>
+                <option>Under 1 litre</option><option>1–2 litres</option><option>2–3 litres</option><option>3+ litres</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="tracking">Do you track food / calories?</label>
+              <select id="tracking" name="tracking">
+                <option value="">Choose one</option>
+                <option>Never</option><option>Tried it before</option><option>Sometimes</option><option>Yes, consistently</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="alcohol">Alcohol per week</label>
+              <select id="alcohol" name="alcohol">
+                <option value="">Choose one</option>
+                <option>None</option><option>1–7 units</option><option>8–14 units</option><option>15+ units</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="typical_day">What does a typical day of eating look like? *</label>
+            <textarea id="typical_day" name="typical_day" rows="4" required placeholder="Breakfast: ... Lunch: ... Dinner: ... Snacks: ..."></textarea>
+          </div>
+          <div class="field">
+            <label for="dietary">Allergies, intolerances or dietary preferences</label>
+            <input id="dietary" name="dietary" type="text" placeholder="e.g. vegetarian, lactose intolerant, halal">
+          </div>
+          <div class="field">
+            <label for="supplements">Supplements you currently take</label>
+            <input id="supplements" name="supplements" type="text" placeholder="e.g. protein powder, creatine">
+          </div>
+          <div class="field">
+            <label for="nutrition_struggles">Biggest nutrition struggle?</label>
+            <textarea id="nutrition_struggles" name="nutrition_struggles" rows="2" placeholder="e.g. snacking in the evenings, not enough protein"></textarea>
+          </div>
+        </fieldset>
+
+        <!-- STEP 6: CONSENT -->
+        <fieldset class="form-step" data-step="6" data-title="Review & send">
+          <legend>6. Review &amp; send</legend>
+          <div id="review" class="review"></div>
+          <div class="field">
+            <label for="anything_else">Anything else you'd like me to know?</label>
+            <textarea id="anything_else" name="anything_else" rows="3"></textarea>
+          </div>
+          <label class="consent">
+            <input type="checkbox" name="consent_accuracy" required>
+            <span>I confirm that my answers, including the PAR-Q, are accurate to the best of my knowledge, and I'll tell Leo if anything changes. *</span>
+          </label>
+          <label class="consent">
+            <input type="checkbox" name="consent_data" required>
+            <span>I agree to KnowledgeGainzz storing my answers, including health information, to assess and plan my training, as described in the <a href="privacy.html" target="_blank">privacy notice</a>. *</span>
+          </label>
+          <label class="consent">
+            <input type="checkbox" name="consent_marketing">
+            <span>Send me occasional training tips and offers (optional).</span>
+          </label>
+        </fieldset>
+
+        <p id="form-error" class="notice notice-error" role="alert" hidden></p>
+
+        <div class="form-nav">
+          <button type="button" class="btn btn-ghost" id="btn-back" hidden>Back</button>
+          <button type="button" class="btn" id="btn-next">Next</button>
+          <button type="submit" class="btn" id="btn-submit" hidden>Send enquiry</button>
+        </div>
+      </form>
+
+      <!-- SUCCESS STATE -->
+      <section id="form-success" class="success" hidden tabindex="-1">
+        <div class="success-icon" aria-hidden="true">&check;</div>
+        <h2>Enquiry sent. Thanks, <span data-first-name>there</span>!</h2>
+        <p id="success-message">Your checklist is on its way to <strong data-client-email></strong>. Check your junk folder if you can't see it within a few minutes.</p>
+
+        <div class="checklist-card">
+          <h3>Your checklist</h3>
+          <ul class="checklist" id="client-checklist"></ul>
+        </div>
+
+        <p>I'll get back to you within 24 hours by <strong data-contact-method>email</strong>. In the meantime, follow along:</p>
+        <div class="social-links center-row">
+          <a data-social="instagram" href="#" target="_blank" rel="noopener" class="social-btn">Instagram</a>
+          <a data-social="tiktok" href="#" target="_blank" rel="noopener" class="social-btn">TikTok</a>
+        </div>
+        <p><a href="index.html">&larr; Back to home</a></p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="small muted">&copy; <span data-year></span> KnowledgeGainzz &middot; <a href="privacy.html">Privacy</a></p>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/enquiry.js"></script>
+</body>
+</html>
