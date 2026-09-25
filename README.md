@@ -46,9 +46,22 @@ Add your real business email and your Instagram and TikTok URLs.
 Until EmailJS is set up, the form still works. It opens the client's email app with their answers addressed to you, and shows the checklist on screen.
 
 ### 3. Put it online (free)
+
+This repo already has `.github/workflows/deploy-pages.yml`, which auto-publishes the
+site to GitHub Pages on every push. It just needs switching on once:
+
+1. On GitHub: **Settings → Pages**.
+2. Under **Build and deployment → Source**, choose **GitHub Actions**.
+3. That's it. The next push (or re-running the "Deploy site to GitHub Pages" action
+   under the **Actions** tab) publishes the site to:
+   `https://<your-github-username>.github.io/<repo-name>/`
+
+This is the link to put in your Instagram/TikTok bio and to generate a QR code for.
+
+Alternatives:
 - **Netlify:** drag the project folder onto [app.netlify.com/drop](https://app.netlify.com/drop).
-- **GitHub Pages:** repo Settings → Pages → deploy from branch.
-- Optional: buy a domain such as `knowledgegainzz.co.uk` (about £10/year) and connect it.
+- Optional: buy a domain such as `knowledgegainzz.co.uk` (about £10/year) and connect it
+  to whichever host you use, for a fully branded link.
 
 ## Social media automation
 
