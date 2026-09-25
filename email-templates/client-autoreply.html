@@ -15,70 +15,51 @@
   actually renders correctly in Gmail, Outlook and Apple Mail — normal
   CSS layout gets stripped or mangled by most email clients.
 
-  Logo: this points to https://y2j828nf9j-gif.github.io/yes/assets/logo.jpg
-  which only works once GitHub Pages is switched on (see README). Until
-  then the logo will just show as a broken image in the email — everything
-  else still works. If you host the site somewhere else, update the <img>
-  src below to match.
+  Logo: points to https://y2j828nf9j-gif.github.io/yes/assets/logo.jpg
+  (your live site), so it needs that site to be up to show correctly.
+
+  This is the SIMPLE version: just a greeting, the checklist, and a
+  sign-off. It drops the "copy of your answers" dump and the separate
+  package box from the earlier version — those are still in the email
+  YOU receive (leo-notification.html), so nothing is lost, it's just
+  not repeated back to the client.
 -->
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f2f1ec;padding:32px 16px;">
   <tr>
     <td align="center">
-      <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#ffffff;border-radius:14px;overflow:hidden;border:1px solid #e5e3d9;">
+      <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#ffffff;border-radius:14px;overflow:hidden;border:1px solid #e5e3d9;">
 
         <!-- Preheader (hidden, shows in inbox preview) -->
         <tr>
           <td style="display:none;max-height:0;overflow:hidden;font-size:1px;color:#f2f1ec;">
-            Thanks for your enquiry — your personalised checklist is inside.
+            Thanks for your enquiry — here's your checklist.
           </td>
         </tr>
 
         <!-- Header -->
         <tr>
-          <td align="center" style="background:#0f110d;padding:36px 24px 30px;">
-            <img src="https://y2j828nf9j-gif.github.io/yes/assets/logo.jpg" width="64" height="64" alt="KnowledgeGainzz"
-                 style="display:block;width:64px;height:64px;border-radius:50%;border:2px solid #e0a72e;margin:0 auto 14px;">
-            <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 auto;">
-              <tr>
-                <td style="font:700 22px/1 Arial,Helvetica,sans-serif;letter-spacing:0.5px;color:#f2f4ec;">KNOWLEDGE<span style="color:#e0a72e;">GAINZZ</span></td>
-              </tr>
-            </table>
-            <p style="margin:10px 0 0;font:13px Arial,Helvetica,sans-serif;color:#a8a190;letter-spacing:0.3px;">
-              NASM CERTIFIED PERSONAL TRAINER &nbsp;&middot;&nbsp; PUREGYM GILTBROOK
-            </p>
+          <td align="center" style="background:#0f110d;padding:28px 24px;">
+            <img src="https://y2j828nf9j-gif.github.io/yes/assets/logo.jpg" width="48" height="48" alt="KnowledgeGainzz"
+                 style="display:block;width:48px;height:48px;border-radius:50%;border:2px solid #e0a72e;margin:0 auto 10px;">
+            <p style="margin:0;font:700 18px/1 Arial,Helvetica,sans-serif;letter-spacing:0.4px;color:#f2f4ec;">KNOWLEDGE<span style="color:#e0a72e;">GAINZZ</span></p>
           </td>
         </tr>
 
         <!-- Body -->
         <tr>
-          <td style="padding:32px 28px 8px;font:15px/1.6 Arial,Helvetica,sans-serif;color:#1a1d16;">
+          <td style="padding:28px 28px 4px;font:15px/1.6 Arial,Helvetica,sans-serif;color:#1a1d16;">
             <p style="margin:0 0 16px;">Hi {{first_name}},</p>
             <p style="margin:0 0 16px;">
-              Thank you for enquiring with KnowledgeGainzz. I've received your details and I'm looking
-              forward to helping you reach your goals. I'll be in touch within <strong>24 hours</strong>
-              by <strong>{{contact_method}}</strong> to arrange your free, no-obligation consultation.
+              Thanks for your enquiry. I'll be in touch within <strong>24 hours</strong> by
+              <strong>{{contact_method}}</strong> to book your free consultation. {{parq_note}}
             </p>
-          </td>
-        </tr>
-
-        <!-- PAR-Q note -->
-        <tr>
-          <td style="padding:0 28px 8px;">
-            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#faf9f2;border:1px solid #eee7d0;border-radius:10px;">
-              <tr>
-                <td style="padding:14px 16px;font:14px/1.6 Arial,Helvetica,sans-serif;color:#5a5443;">
-                  {{parq_note}}
-                </td>
-              </tr>
-            </table>
           </td>
         </tr>
 
         <!-- Checklist -->
         <tr>
-          <td style="padding:28px 28px 4px;">
-            <p style="margin:0 0 4px;font:700 16px Arial,Helvetica,sans-serif;color:#0f110d;">Your checklist</p>
-            <p style="margin:0 0 14px;font:13px Arial,Helvetica,sans-serif;color:#8a9180;">Everything you need before your first session</p>
+          <td style="padding:8px 28px 4px;">
+            <p style="margin:0 0 12px;font:700 15px Arial,Helvetica,sans-serif;color:#0f110d;">Before your first session</p>
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#faf9f2;border-radius:10px;border:1px solid #eee7d0;">
               <tr>
                 <td style="padding:14px 16px;">
@@ -91,69 +72,18 @@
           </td>
         </tr>
 
-        <!-- Summary of answers -->
-        <tr>
-          <td style="padding:28px 28px 4px;">
-            <p style="margin:0 0 4px;font:700 16px Arial,Helvetica,sans-serif;color:#0f110d;">A copy of your answers</p>
-            <p style="margin:0 0 14px;font:13px Arial,Helvetica,sans-serif;color:#8a9180;">Spotted a mistake? Just reply to this email and let me know.</p>
-            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#fbfbf9;border:1px solid #ece9de;border-radius:10px;">
-              <tr>
-                <td style="padding:16px 18px;font:13px/1.7 'Courier New',Courier,monospace;color:#3a3d33;white-space:pre-line;">{{summary}}</td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-
-        <!-- Package interest -->
-        <tr>
-          <td style="padding:24px 28px 4px;">
-            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#0f110d;border-radius:10px;">
-              <tr>
-                <td style="padding:16px 18px;">
-                  <p style="margin:0 0 2px;font:12px Arial,Helvetica,sans-serif;color:#a8a190;letter-spacing:0.4px;text-transform:uppercase;">Package of interest</p>
-                  <p style="margin:0;font:700 16px Arial,Helvetica,sans-serif;color:#e0a72e;">{{package_interest}}</p>
-                  <p style="margin:6px 0 0;font:12px Arial,Helvetica,sans-serif;color:#a8a190;">Nothing is confirmed until after your free consultation.</p>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-
         <!-- Sign-off -->
         <tr>
-          <td style="padding:28px 28px 8px;font:15px/1.6 Arial,Helvetica,sans-serif;color:#1a1d16;">
-            <p style="margin:0 0 4px;">Speak soon,</p>
+          <td style="padding:24px 28px 28px;font:15px/1.6 Arial,Helvetica,sans-serif;color:#1a1d16;">
+            <p style="margin:0 0 2px;">Speak soon,</p>
             <p style="margin:0;font-weight:700;">Leo</p>
-            <p style="margin:2px 0 0;font:13px Arial,Helvetica,sans-serif;color:#8a9180;">NASM Certified Personal Trainer &middot; KnowledgeGainzz &middot; PureGym Giltbrook</p>
-          </td>
-        </tr>
-
-        <!-- Socials / CTA -->
-        <tr>
-          <td style="padding:20px 28px 32px;">
-            <table role="presentation" cellpadding="0" cellspacing="0" width="100%">
-              <tr>
-                <td align="center" style="padding-top:8px;">
-                  <a href="https://www.instagram.com/knowledgegainzz" style="display:inline-block;margin:0 6px;padding:10px 18px;background:#ffffff;border:1px solid #e5e3d9;border-radius:999px;font:600 13px Arial,Helvetica,sans-serif;color:#1a1d16;text-decoration:none;">Instagram</a>
-                  <a href="https://www.tiktok.com/@knowledgegainzz" style="display:inline-block;margin:0 6px;padding:10px 18px;background:#ffffff;border:1px solid #e5e3d9;border-radius:999px;font:600 13px Arial,Helvetica,sans-serif;color:#1a1d16;text-decoration:none;">TikTok</a>
-                </td>
-              </tr>
-            </table>
+            <p style="margin:12px 0 0;font:12px Arial,Helvetica,sans-serif;color:#8a9180;">
+              Questions? Just reply to this email, or find us
+              <a href="https://www.instagram.com/knowledgegainzz" style="color:#8a9180;">on Instagram</a>.
+            </p>
           </td>
         </tr>
       </table>
-
-      <!-- Footer -->
-      <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
-        <tr>
-          <td align="center" style="padding:20px 12px;font:12px/1.6 Arial,Helvetica,sans-serif;color:#9a9a8c;">
-            You're receiving this because you submitted an enquiry at KnowledgeGainzz.<br>
-            KnowledgeGainzz &middot; PureGym Giltbrook, Nottingham &middot;
-            <a href="mailto:{{trainer_email}}" style="color:#9a9a8c;">{{trainer_email}}</a>
-          </td>
-        </tr>
-      </table>
-
     </td>
   </tr>
 </table>
