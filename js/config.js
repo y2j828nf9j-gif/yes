@@ -9,7 +9,7 @@ window.KG_CONFIG = {
   business: {
     name: "KnowledgeGainzz",
     trainer: "Leo",
-    email: "hello@knowledgegainzz.co.uk", // <-- your business email
+    email: "KnowledgeGainzz1@gmail.com", // <-- your business email
     location: "PureGym Giltbrook, Nottingham"
   },
 
