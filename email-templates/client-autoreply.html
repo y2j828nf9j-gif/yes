@@ -18,10 +18,10 @@
   Logo: points to https://y2j828nf9j-gif.github.io/yes/assets/logo.jpg
   (your live site), so it needs that site to be up to show correctly.
 
-  This is the SIMPLE version: greeting, checklist, package of interest,
-  sign-off, and Instagram/TikTok links. It still drops the "copy of
-  your answers" text dump from the original version — that stays in
-  the email YOU receive (leo-notification.html).
+  This is the SIMPLE version: greeting, next steps (plain text, not
+  HTML — EmailJS inserts merge variables as literal text, so an
+  earlier HTML-table version showed up as raw code in the inbox),
+  package of interest, sign-off, and Instagram/TikTok links.
 -->
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f2f1ec;padding:32px 16px;">
   <tr>
@@ -55,17 +55,13 @@
           </td>
         </tr>
 
-        <!-- Checklist -->
+        <!-- Next steps -->
         <tr>
           <td style="padding:8px 28px 4px;">
-            <p style="margin:0 0 12px;font:700 15px Arial,Helvetica,sans-serif;color:#0f110d;">Before your first session</p>
+            <p style="margin:0 0 12px;font:700 15px Arial,Helvetica,sans-serif;color:#0f110d;">Next steps</p>
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#faf9f2;border-radius:10px;border:1px solid #eee7d0;">
               <tr>
-                <td style="padding:14px 16px;">
-                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
-                    {{checklist_html}}
-                  </table>
-                </td>
+                <td style="padding:16px 18px;font:14px/1.7 Arial,Helvetica,sans-serif;color:#1a1d16;white-space:pre-line;">{{next_steps}}</td>
               </tr>
             </table>
           </td>
