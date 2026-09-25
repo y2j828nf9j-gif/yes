@@ -294,6 +294,27 @@
     }).join("\n");
   }
 
+  // HTML version for the EmailJS templates: a table-based row list that
+  // renders reliably across email clients (Gmail, Outlook, Apple Mail).
+  function checklistHtml(items) {
+    return items.map(function (item) {
+      var color = item.done ? "#c8f542" : item.important ? "#ffb547" : "#d9dccf";
+      var textColor = item.done ? "#8a9180" : item.important ? "#7a4a00" : "#1a1d16";
+      var mark = item.done ? "&#10003;" : item.important ? "!" : "";
+      var bg = item.important ? "background:#fff6e8;" : "";
+      return (
+        '<tr' + (item.important ? ' style="' + bg + '"' : '') + '>' +
+        '<td width="26" valign="top" style="padding:6px 8px 6px 0;">' +
+        '<span style="display:inline-block;width:18px;height:18px;line-height:18px;text-align:center;' +
+        'border-radius:4px;background:' + color + ';color:#14110a;font:bold 12px Arial,sans-serif;">' + mark + '</span>' +
+        '</td>' +
+        '<td valign="top" style="padding:6px 0;font:14px/1.5 Arial,Helvetica,sans-serif;color:' + textColor + ';">' +
+        escapeHtml(item.text) +
+        '</td></tr>'
+      );
+    }).join("");
+  }
+
   function renderChecklist(items) {
     document.getElementById("client-checklist").innerHTML = items.map(function (item) {
       var cls = item.done ? "is-done" : item.important ? "is-important" : "";
@@ -388,6 +409,7 @@
       package_interest: data.package_interest || "Not sure — recommend one",
       parq_status: flagged ? "FLAGGED: GP clearance may be required" : "All clear",
       checklist: checklistText(items),
+      checklist_html: checklistHtml(items),
       submitted_at: new Date().toLocaleString("en-GB"),
       trainer_email: business.email
     };
