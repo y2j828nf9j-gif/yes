@@ -17,6 +17,7 @@
   --error: #ff6b5b;
 
   /* pricing tier accents */
+  --tier-payg: #a8a190;
   --tier-bronze: #cd7f32;
   --tier-silver: #c7cdd6;
   --tier-gold: #e6b422;
@@ -318,6 +319,7 @@ p { margin: 0 0 1em; }
   padding: 26px 22px;
   display: flex; flex-direction: column;
 }
+.price-card.tier-payg { --tier: var(--tier-payg); }
 .price-card.tier-bronze { --tier: var(--tier-bronze); }
 .price-card.tier-silver { --tier: var(--tier-silver); }
 .price-card.tier-gold { --tier: var(--tier-gold); }
