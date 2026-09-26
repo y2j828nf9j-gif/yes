@@ -53,15 +53,30 @@ site to GitHub Pages on every push. It just needs switching on once:
 1. On GitHub: **Settings → Pages**.
 2. Under **Build and deployment → Source**, choose **GitHub Actions**.
 3. That's it. The next push (or re-running the "Deploy site to GitHub Pages" action
-   under the **Actions** tab) publishes the site to:
-   `https://<your-github-username>.github.io/<repo-name>/`
+   under the **Actions** tab) publishes the site.
 
-This is the link to put in your Instagram/TikTok bio and to generate a QR code for.
+### Custom domain: knowledgegainzz.co.uk
 
-Alternatives:
-- **Netlify:** drag the project folder onto [app.netlify.com/drop](https://app.netlify.com/drop).
-- Optional: buy a domain such as `knowledgegainzz.co.uk` (about £10/year) and connect it
-  to whichever host you use, for a fully branded link.
+This repo already has a `CNAME` file set to `knowledgegainzz.co.uk`, so GitHub Pages
+is ready for it. Two things to do once you own the domain:
+
+1. **At your domain registrar** (wherever you bought `knowledgegainzz.co.uk`), add these
+   DNS records:
+   - Four **A** records for the root domain (`@`), pointing to GitHub Pages' IPs:
+     `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
+   - One **CNAME** record for `www`, pointing to `y2j828nf9j-gif.github.io`
+2. **On GitHub:** Settings → Pages → under **Custom domain**, enter
+   `knowledgegainzz.co.uk` and save. Once GitHub verifies the DNS (can take up to a
+   few hours), tick **Enforce HTTPS**.
+
+Until DNS is set up and verified, the site is still reachable at
+`https://y2j828nf9j-gif.github.io/yes/` — once the domain is live, that old link
+will redirect to it automatically.
+
+**This is the link to put in your Instagram/TikTok bio and to generate a QR code for:**
+`https://knowledgegainzz.co.uk`
+
+Alternative: **Netlify** — drag the project folder onto [app.netlify.com/drop](https://app.netlify.com/drop).
 
 ## Social media automation
 
