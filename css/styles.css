@@ -39,6 +39,8 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
+/* display rules like .btn { display: inline-flex } would otherwise override the hidden attribute */
+[hidden] { display: none !important; }
 
 html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 

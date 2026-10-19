@@ -397,7 +397,16 @@
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-    if (!validateStep(steps[current])) return;
+    // Enter / "Go" on a phone keyboard submits the form from any step: treat it as Next
+    if (current < steps.length - 1) {
+      if (validateStep(steps[current])) showStep(current + 1);
+      return;
+    }
+    // Every step must be complete (PAR-Q, consents, etc.) before anything is sent
+    for (var i = 0; i < steps.length; i++) {
+      if (i !== current) showStep(i, true);
+      if (!validateStep(steps[i])) { form.scrollIntoView({ behavior: "smooth", block: "start" }); return; }
+    }
 
     var data = getData();
     if (data.company_website) return; // honeypot tripped: silently ignore bots
