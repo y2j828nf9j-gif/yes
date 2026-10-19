@@ -331,6 +331,17 @@ p { margin: 0 0 1em; }
 .price-card.tier-physique { --tier: var(--tier-physique); }
 .price-card.tier-athlete { --tier: var(--tier-athlete); }
 .price-card.tier-group { --tier: var(--tier-group); }
+.price-card.tier-free { --tier: var(--accent); }
+
+.card-tag-right { left: auto; right: 22px; }
+.price-card-free { grid-column: 1 / -1; padding-top: 32px; }
+.price-free-foot { display: grid; gap: 12px; }
+.price-free-foot .btn { justify-content: center; text-align: center; }
+@media (min-width: 680px) {
+  .price-card-free .price-features { grid-template-columns: repeat(2, 1fr); column-gap: 24px; }
+  .price-free-foot { grid-template-columns: 1fr auto; align-items: stretch; }
+  .price-free-foot .btn { display: flex; align-items: center; }
+}
 
 .price-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
 .price-name {

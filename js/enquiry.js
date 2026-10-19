@@ -14,8 +14,31 @@
   if (!form) return;
 
   var config = window.KG_CONFIG || {};
-  var DRAFT_KEY = "kg-enquiry-draft";
+  var FREE = new URLSearchParams(window.location.search).get("bundle") === "free";
+  var FREE_BUNDLE = "Free Taster: 4 x 1:1 PT sessions, 1 a week over 4 weeks (first 20 people)";
+  var DRAFT_KEY = FREE ? "kg-enquiry-draft-free" : "kg-enquiry-draft";
   var EMAILJS_URL = "https://api.emailjs.com/api/v1.0/email/send";
+
+  // Free taster: just details + PAR-Q, so drop experience, goals and nutrition
+  if (FREE) {
+    ["3", "4", "5"].forEach(function (n) {
+      var fs = form.querySelector('.form-step[data-step="' + n + '"]');
+      if (fs) fs.remove();
+    });
+    var reviewLegend = form.querySelector('.form-step[data-step="6"] legend');
+    if (reviewLegend) reviewLegend.textContent = "3. Review & send";
+    document.title = "Claim your free taster | KnowledgeGainzz Personal Training";
+    var intro = document.querySelector(".form-intro");
+    intro.querySelector(".eyebrow").textContent = "Free Taster bundle";
+    intro.querySelector("h1").textContent = "Claim your free taster";
+    intro.querySelector("p:not(.eyebrow)").innerHTML =
+      "4 free 1:1 PT sessions, one a week, with technique coaching. All I need is your details and a quick health check (PAR-Q), which takes about 2 minutes. " +
+      "Spots are limited to the first 20 people.";
+    var alt = document.createElement("p");
+    alt.className = "small muted";
+    alt.innerHTML = 'Looking for a paid package? <a href="enquire.html">Use the full enquiry form</a>.';
+    intro.appendChild(alt);
+  }
 
   var steps = Array.prototype.slice.call(form.querySelectorAll(".form-step"));
   var btnBack = document.getElementById("btn-back");
@@ -67,6 +90,10 @@
       ["anything_else", "Anything else"], ["consent_marketing", "Marketing opt-in"]
     ]]
   ];
+  var SUMMARY_SECTIONS = FREE
+    ? [["Bundle", [["package_interest", "Bundle"]]], SECTIONS[0], SECTIONS[1], SECTIONS[5]]
+    : SECTIONS;
+  var REVIEW_SECTIONS = FREE ? SECTIONS.slice(0, 2) : SECTIONS.slice(0, 5);
 
   /* ---------- helpers ---------- */
 
@@ -79,6 +106,7 @@
     });
     // Unticked checkboxes aren't in FormData
     data.consent_marketing = form.elements.consent_marketing.checked ? "Yes" : "No";
+    if (FREE) data.package_interest = FREE_BUNDLE;
     return data;
   }
 
@@ -204,7 +232,7 @@
   function renderReview() {
     var data = getData();
     var html = "";
-    SECTIONS.slice(0, 5).forEach(function (section, i) {
+    REVIEW_SECTIONS.forEach(function (section, i) {
       var rows = section[1].filter(function (f) { return data[f[0]]; }).map(function (f) {
         return "<div><dt>" + escapeHtml(f[1]) + "</dt><dd>" + escapeHtml(data[f[0]]) + "</dd></div>";
       }).join("");
@@ -261,7 +289,12 @@
   /* ---------- checklist ---------- */
 
   function buildChecklist(data) {
-    var items = [
+    var items = FREE ? [
+      { done: true, text: "Free Taster claim and PAR-Q health questionnaire submitted" },
+      { text: "Reply to Leo's message with the day and time that suits you each week for your 4 free sessions at PureGym Giltbrook" },
+      { text: "Make sure you have gym access at PureGym Giltbrook (membership or day pass)" },
+      { text: "Bring to your first session: water bottle, trainers, a towel and any medication you may need (e.g. inhaler)" }
+    ] : [
       { done: true, text: "Enquiry and PAR-Q health questionnaire submitted" },
       { text: "Reply to Leo's message with 2–3 times that suit you for a free consultation at PureGym Giltbrook" },
       { text: "Log everything you eat and drink for 3 typical days (including one weekend day). Photos or an app like MyFitnessPal are both fine" },
@@ -316,7 +349,7 @@
   /* ---------- summary for Leo ---------- */
 
   function buildSummary(data) {
-    return SECTIONS.map(function (section) {
+    return SUMMARY_SECTIONS.map(function (section) {
       var lines = section[1].filter(function (f) { return data[f[0]]; }).map(function (f) {
         return f[1] + ": " + data[f[0]];
       });
@@ -377,7 +410,7 @@
 
     if (!isEmailjsConfigured()) {
       // Fallback: open the client's email app addressed to Leo
-      var subject = "PT enquiry: " + data.full_name + (flagged ? " (PAR-Q flagged)" : "");
+      var subject = (FREE ? "Free Taster claim: " : "PT enquiry: ") + data.full_name + (flagged ? " (PAR-Q flagged)" : "");
       window.location.href = "mailto:" + business.email +
         "?subject=" + encodeURIComponent(subject) +
         "&body=" + encodeURIComponent(summary);
@@ -412,6 +445,10 @@
     var clientParams = Object.assign({}, shared, {
       summary: summary,
       reply_to: business.email,
+      booking_line: FREE ? "book in your 4 free sessions" : "book your free consultation",
+      package_note: FREE
+        ? "Spots are limited to the first 20 people, so I'll confirm yours when I get in touch."
+        : "Nothing is confirmed until after your free consultation.",
       parq_note: flagged
         ? "Because you answered \"yes\" to at least one PAR-Q question, please get written confirmation from your GP that you're fine to start exercising before your first session."
         : "Your PAR-Q came back all clear, so you're good to go."
