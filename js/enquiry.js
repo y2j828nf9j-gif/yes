@@ -19,21 +19,22 @@
   var DRAFT_KEY = FREE ? "kg-enquiry-draft-free" : "kg-enquiry-draft";
   var EMAILJS_URL = "https://api.emailjs.com/api/v1.0/email/send";
 
-  // Free taster: just details + PAR-Q, so drop experience, goals and nutrition
+  // Free taster: details, PAR-Q, then its own short goals + training history steps
+  // in place of the full form's experience, goals and nutrition steps
+  var dropSelector = FREE
+    ? '.form-step[data-step="3"], .form-step[data-step="4"], .form-step[data-step="5"]'
+    : '.form-step[data-mode="free"]';
+  form.querySelectorAll(dropSelector).forEach(function (fs) { fs.remove(); });
   if (FREE) {
-    ["3", "4", "5"].forEach(function (n) {
-      var fs = form.querySelector('.form-step[data-step="' + n + '"]');
-      if (fs) fs.remove();
-    });
     var reviewLegend = form.querySelector('.form-step[data-step="6"] legend');
-    if (reviewLegend) reviewLegend.textContent = "3. Review & send";
+    if (reviewLegend) reviewLegend.textContent = "5. Review & send";
     document.title = "Claim your free taster | KnowledgeGainzz Personal Training";
     var intro = document.querySelector(".form-intro");
     intro.querySelector(".eyebrow").textContent = "Free Taster bundle";
     intro.querySelector("h1").textContent = "Claim your free taster";
     intro.querySelector("p:not(.eyebrow)").innerHTML =
-      "4 free 1:1 PT sessions, one a week, with technique coaching. All I need is your details and a quick health check (PAR-Q), which takes about 2 minutes. " +
-      "Spots are limited to the first 20 people.";
+      "4 free 1:1 PT sessions, one a week, with technique coaching. I'll ask for your details, a quick health check (PAR-Q), and a few questions about your goals and training so I can make the most of your sessions. " +
+      "It takes about 5 minutes. Spots are limited to the first 20 people.";
     var alt = document.createElement("p");
     alt.className = "small muted";
     alt.innerHTML = 'Looking for a paid package? <a href="enquire.html">Use the full enquiry form</a>.';
@@ -90,10 +91,27 @@
       ["anything_else", "Anything else"], ["consent_marketing", "Marketing opt-in"]
     ]]
   ];
+  var FREE_SECTIONS = [
+    ["Goals", [
+      ["primary_goal", "Primary goal"], ["secondary_goals", "Secondary goals"],
+      ["specific_target", "Specific target"], ["target_deadline", "Deadline / event"],
+      ["goal_reason", "Why it matters now"], ["motivation", "Motivation (0-10)"],
+      ["past_barriers", "What stopped them before"]
+    ]],
+    ["Training history", [
+      ["activity_level", "Activity level"], ["weekly_activity", "Each week"],
+      ["training_experience", "Experience"], ["training_types", "Training types"],
+      ["exercises_enjoy", "Enjoys"], ["exercises_hate", "Hates"],
+      ["previous_programmes", "Previous programmes"],
+      ["lift_squat", "Squat"], ["lift_hinge", "Hinge"], ["lift_press", "Press"],
+      ["lift_row", "Row"], ["lift_pullup", "Pull-up"]
+    ]]
+  ];
   var SUMMARY_SECTIONS = FREE
-    ? [["Bundle", [["package_interest", "Bundle"]]], SECTIONS[0], SECTIONS[1], SECTIONS[5]]
+    ? [["Bundle", [["package_interest", "Bundle"]]], SECTIONS[0], SECTIONS[1]].concat(FREE_SECTIONS, [SECTIONS[5]])
     : SECTIONS;
-  var REVIEW_SECTIONS = FREE ? SECTIONS.slice(0, 2) : SECTIONS.slice(0, 5);
+  // Review sections line up with step indexes so each "Edit" jumps to the right step
+  var REVIEW_SECTIONS = FREE ? SECTIONS.slice(0, 2).concat(FREE_SECTIONS) : SECTIONS.slice(0, 5);
 
   /* ---------- helpers ---------- */
 
@@ -283,8 +301,12 @@
     try { localStorage.removeItem(DRAFT_KEY); } catch (err) { /* ignore */ }
   }
 
-  form.addEventListener("input", function () { updateConditionals(); saveDraft(); });
-  form.addEventListener("change", function () { updateConditionals(); saveDraft(); });
+  function clearFixedError(e) {
+    var wrap = e.target.closest(".has-error");
+    if (wrap && e.target.checkValidity()) wrap.classList.remove("has-error");
+  }
+  form.addEventListener("input", function (e) { clearFixedError(e); updateConditionals(); saveDraft(); });
+  form.addEventListener("change", function (e) { clearFixedError(e); updateConditionals(); saveDraft(); });
 
   /* ---------- checklist ---------- */
 
@@ -438,7 +460,7 @@
       client_phone: data.phone || "Not given",
       contact_method: data.contact_method,
       social_handle: data.social_handle || "N/A",
-      goals: data.goals || "",
+      goals: data.goals || [data.primary_goal, data.secondary_goals].filter(Boolean).join(", "),
       package_interest: data.package_interest || "Not sure — recommend one",
       parq_status: flagged ? "FLAGGED: GP clearance may be required" : "All clear",
       checklist: checklistText(items),

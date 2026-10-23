@@ -149,6 +149,134 @@
           </div>
         </fieldset>
 
+        <!-- FREE TASTER ONLY: GOALS -->
+        <fieldset class="form-step" data-mode="free" data-title="Goals">
+          <legend>3. Your goals</legend>
+          <div class="field">
+            <span class="label">Primary goal *</span>
+            <div class="choice-row">
+              <label class="chip"><input type="radio" name="primary_goal" value="Fat loss" required> Fat loss</label>
+              <label class="chip"><input type="radio" name="primary_goal" value="Muscle gain"> Muscle gain</label>
+              <label class="chip"><input type="radio" name="primary_goal" value="Strength"> Strength</label>
+              <label class="chip"><input type="radio" name="primary_goal" value="Performance"> Performance</label>
+              <label class="chip"><input type="radio" name="primary_goal" value="General health"> General health</label>
+              <label class="chip"><input type="radio" name="primary_goal" value="Rehab / return to training"> Rehab / return to training</label>
+            </div>
+          </div>
+          <div class="field">
+            <span class="label">Secondary goals (optional, choose any)</span>
+            <div class="choice-row">
+              <label class="chip"><input type="checkbox" name="secondary_goals" value="Fat loss"> Fat loss</label>
+              <label class="chip"><input type="checkbox" name="secondary_goals" value="Muscle gain"> Muscle gain</label>
+              <label class="chip"><input type="checkbox" name="secondary_goals" value="Strength"> Strength</label>
+              <label class="chip"><input type="checkbox" name="secondary_goals" value="Performance"> Performance</label>
+              <label class="chip"><input type="checkbox" name="secondary_goals" value="General health"> General health</label>
+              <label class="chip"><input type="checkbox" name="secondary_goals" value="Mobility"> Mobility</label>
+              <label class="chip"><input type="checkbox" name="secondary_goals" value="Gym confidence"> Gym confidence</label>
+            </div>
+          </div>
+          <div class="grid-2">
+            <div class="field">
+              <label for="specific_target">Specific target *</label>
+              <input id="specific_target" name="specific_target" type="text" required placeholder="e.g. lose 8kg, squat my bodyweight">
+            </div>
+            <div class="field">
+              <label for="target_deadline">Deadline or event</label>
+              <input id="target_deadline" name="target_deadline" type="text" placeholder="e.g. holiday in June, no fixed date">
+            </div>
+          </div>
+          <div class="field">
+            <label for="goal_reason">Why does this goal matter to you now? *</label>
+            <textarea id="goal_reason" name="goal_reason" rows="3" required></textarea>
+          </div>
+          <div class="field">
+            <span class="label">How motivated are you right now? (0 = not at all, 10 = completely) *</span>
+            <div class="choice-row score-row">
+              <label class="chip"><input type="radio" name="motivation" value="0" required> 0</label>
+              <label class="chip"><input type="radio" name="motivation" value="1"> 1</label>
+              <label class="chip"><input type="radio" name="motivation" value="2"> 2</label>
+              <label class="chip"><input type="radio" name="motivation" value="3"> 3</label>
+              <label class="chip"><input type="radio" name="motivation" value="4"> 4</label>
+              <label class="chip"><input type="radio" name="motivation" value="5"> 5</label>
+              <label class="chip"><input type="radio" name="motivation" value="6"> 6</label>
+              <label class="chip"><input type="radio" name="motivation" value="7"> 7</label>
+              <label class="chip"><input type="radio" name="motivation" value="8"> 8</label>
+              <label class="chip"><input type="radio" name="motivation" value="9"> 9</label>
+              <label class="chip"><input type="radio" name="motivation" value="10"> 10</label>
+            </div>
+          </div>
+          <div class="field">
+            <label for="past_barriers">What has stopped you reaching it before? *</label>
+            <textarea id="past_barriers" name="past_barriers" rows="3" required placeholder="e.g. lost motivation after a few weeks, didn't know what to do in the gym, work got busy"></textarea>
+          </div>
+        </fieldset>
+
+        <!-- FREE TASTER ONLY: TRAINING HISTORY -->
+        <fieldset class="form-step" data-mode="free" data-title="Training history">
+          <legend>4. Training history</legend>
+          <div class="grid-2">
+            <div class="field">
+              <label for="activity_level">Current activity level *</label>
+              <select id="activity_level" name="activity_level" required>
+                <option value="">Choose one</option>
+                <option>Not active right now</option>
+                <option>Lightly active (some walking)</option>
+                <option>Active (exercise 1–2 times a week)</option>
+                <option>Very active (exercise 3+ times a week)</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="training_experience">Training experience *</label>
+              <select id="training_experience" name="training_experience" required>
+                <option value="">Choose one</option>
+                <option>None yet</option>
+                <option>Under 6 months</option>
+                <option>6–12 months</option>
+                <option>1–3 years</option>
+                <option>3+ years</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="weekly_activity">What do you do each week? *</label>
+            <textarea id="weekly_activity" name="weekly_activity" rows="3" required placeholder="e.g. gym twice a week (machines), 5-a-side on Sundays, walk the dog daily"></textarea>
+          </div>
+          <div class="field">
+            <span class="label">Types of training you've done (choose any)</span>
+            <div class="choice-row">
+              <label class="chip"><input type="checkbox" name="training_types" value="Gym"> Gym</label>
+              <label class="chip"><input type="checkbox" name="training_types" value="Sport"> Sport</label>
+              <label class="chip"><input type="checkbox" name="training_types" value="Classes"> Classes</label>
+              <label class="chip"><input type="checkbox" name="training_types" value="Running / cardio"> Running / cardio</label>
+              <label class="chip"><input type="checkbox" name="training_types" value="Home workouts"> Home workouts</label>
+            </div>
+          </div>
+          <div class="grid-2">
+            <div class="field">
+              <label for="exercises_enjoy">Exercises you enjoy</label>
+              <input id="exercises_enjoy" name="exercises_enjoy" type="text" placeholder="e.g. hip thrusts, cycling">
+            </div>
+            <div class="field">
+              <label for="exercises_hate">Exercises you hate</label>
+              <input id="exercises_hate" name="exercises_hate" type="text" placeholder="e.g. burpees, running">
+            </div>
+          </div>
+          <div class="field">
+            <label for="previous_programmes">Previous programmes: what worked and what didn't?</label>
+            <textarea id="previous_programmes" name="previous_programmes" rows="3" placeholder="e.g. followed an app plan for 2 months, liked the structure but got bored"></textarea>
+          </div>
+          <div class="field">
+            <span class="label">How familiar are you with these key lifts? *</span>
+            <div class="parq lift-list">
+              <div class="parq-q"><p>Squat</p><div class="yn"><label><input type="radio" name="lift_squat" value="Never tried" required> Never tried</label><label><input type="radio" name="lift_squat" value="Done a few times"> A few times</label><label><input type="radio" name="lift_squat" value="Confident"> Confident</label></div></div>
+              <div class="parq-q"><p>Hinge (e.g. deadlift, RDL)</p><div class="yn"><label><input type="radio" name="lift_hinge" value="Never tried" required> Never tried</label><label><input type="radio" name="lift_hinge" value="Done a few times"> A few times</label><label><input type="radio" name="lift_hinge" value="Confident"> Confident</label></div></div>
+              <div class="parq-q"><p>Press (e.g. bench, overhead press)</p><div class="yn"><label><input type="radio" name="lift_press" value="Never tried" required> Never tried</label><label><input type="radio" name="lift_press" value="Done a few times"> A few times</label><label><input type="radio" name="lift_press" value="Confident"> Confident</label></div></div>
+              <div class="parq-q"><p>Row</p><div class="yn"><label><input type="radio" name="lift_row" value="Never tried" required> Never tried</label><label><input type="radio" name="lift_row" value="Done a few times"> A few times</label><label><input type="radio" name="lift_row" value="Confident"> Confident</label></div></div>
+              <div class="parq-q"><p>Pull-up</p><div class="yn"><label><input type="radio" name="lift_pullup" value="Never tried" required> Never tried</label><label><input type="radio" name="lift_pullup" value="Done a few times"> A few times</label><label><input type="radio" name="lift_pullup" value="Confident"> Confident</label></div></div>
+            </div>
+          </div>
+        </fieldset>
+
         <!-- STEP 3: EXPERIENCE & ACTIVITY -->
         <fieldset class="form-step" data-step="3" data-title="Experience & activity">
           <legend>3. Experience &amp; current activity</legend>

@@ -521,6 +521,13 @@ input[type="radio"], input[type="checkbox"] { accent-color: var(--accent); width
 }
 .chip:has(input:checked) { border-color: var(--accent); background: rgba(200, 245, 66, 0.08); }
 
+.score-row { gap: 6px; }
+.score-row .chip { position: relative; width: 42px; padding: 9px 0; justify-content: center; font-weight: 700 !important; }
+.score-row .chip input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.score-row .chip:has(input:checked) { background: var(--accent); color: var(--accent-ink); }
+.score-row .chip:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
+.lift-list .yn { flex-wrap: wrap; gap: 8px 18px; }
+
 .choice-stack { display: grid; gap: 10px; }
 .option {
   display: flex !important; align-items: flex-start; gap: 12px;
