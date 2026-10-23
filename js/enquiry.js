@@ -18,6 +18,7 @@
   var FREE_BUNDLE = "Free Taster: 2 x 1:1 PT sessions, 1 a week over 2 weeks (first 20 people)";
   var DRAFT_KEY = FREE ? "kg-enquiry-draft-free" : "kg-enquiry-draft";
   var EMAILJS_URL = "https://api.emailjs.com/api/v1.0/email/send";
+  var BOOKING_NOTICE_DAYS = 5;
 
   // Free taster: details, PAR-Q, then its own short goals + training history steps
   // in place of the full form's experience, goals and nutrition steps
@@ -404,7 +405,14 @@
     var base = (config.business || {}).freeTasterBookingUrl;
     var card = document.getElementById("free-booking");
     if (!base || !card) return;
+    // Open on the earliest bookable day; the 5-day minimum notice itself is enforced in Calendly
+    var earliest = new Date();
+    earliest.setDate(earliest.getDate() + BOOKING_NOTICE_DAYS);
+    var pad = function (n) { return n < 10 ? "0" + n : String(n); };
+    var month = earliest.getFullYear() + "-" + pad(earliest.getMonth() + 1);
     var params = new URLSearchParams({
+      month: month,
+      date: month + "-" + pad(earliest.getDate()),
       embed_type: "Inline",
       embed_domain: window.location.hostname || "localhost",
       hide_gdpr_banner: "1",
