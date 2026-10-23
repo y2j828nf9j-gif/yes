@@ -15,7 +15,7 @@
 
   var config = window.KG_CONFIG || {};
   var FREE = new URLSearchParams(window.location.search).get("bundle") === "free";
-  var FREE_BUNDLE = "Free Taster: 4 x 1:1 PT sessions, 1 a week over 4 weeks (first 20 people)";
+  var FREE_BUNDLE = "Free Taster: 2 x 1:1 PT sessions, 1 a week over 2 weeks (first 20 people)";
   var DRAFT_KEY = FREE ? "kg-enquiry-draft-free" : "kg-enquiry-draft";
   var EMAILJS_URL = "https://api.emailjs.com/api/v1.0/email/send";
 
@@ -33,7 +33,7 @@
     intro.querySelector(".eyebrow").textContent = "Free Taster bundle";
     intro.querySelector("h1").textContent = "Claim your free taster";
     intro.querySelector("p:not(.eyebrow)").innerHTML =
-      "4 free 1:1 PT sessions, one a week, with technique coaching. I'll ask for your details, a quick health check (PAR-Q), and a few questions about your goals and training so I can make the most of your sessions. " +
+      "2 free 1:1 PT sessions, one a week, with technique coaching. I'll ask for your details, a quick health check (PAR-Q), and a few questions about your goals and training so I can make the most of your sessions. " +
       "It takes about 5 minutes. Spots are limited to the first 20 people.";
     var alt = document.createElement("p");
     alt.className = "small muted";
@@ -313,7 +313,7 @@
   function buildChecklist(data) {
     var items = FREE ? [
       { done: true, text: "Free Taster claim and PAR-Q health questionnaire submitted" },
-      { text: "Reply to Leo's message with the day and time that suits you each week for your 4 free sessions at PureGym Giltbrook" },
+      { text: "Reply to Leo's message with the day and time that suits you each week for your 2 free sessions at PureGym Giltbrook" },
       { text: "Make sure you have gym access at PureGym Giltbrook (membership or day pass)" },
       { text: "Bring to your first session: water bottle, trainers, a towel and any medication you may need (e.g. inhaler)" }
     ] : [
@@ -476,7 +476,7 @@
     var clientParams = Object.assign({}, shared, {
       summary: summary,
       reply_to: business.email,
-      booking_line: FREE ? "book in your 4 free sessions" : "book your free consultation",
+      booking_line: FREE ? "book in your 2 free sessions" : "book your free consultation",
       package_note: FREE
         ? "Spots are limited to the first 20 people, so I'll confirm yours when I get in touch."
         : "Nothing is confirmed until after your free consultation.",
