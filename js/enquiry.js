@@ -313,7 +313,9 @@
   function buildChecklist(data) {
     var items = FREE ? [
       { done: true, text: "Free Taster claim and PAR-Q health questionnaire submitted" },
-      { text: "Reply to Leo's message with the day and time that suits you each week for your 2 free sessions at PureGym Giltbrook" },
+      (config.business || {}).freeTasterBookingUrl
+        ? { text: "Book your 2 free sessions at PureGym Giltbrook: " + config.business.freeTasterBookingUrl }
+        : { text: "Reply to Leo's message with the day and time that suits you each week for your 2 free sessions at PureGym Giltbrook" },
       { text: "Make sure you have gym access at PureGym Giltbrook (membership or day pass)" },
       { text: "Bring to your first session: water bottle, trainers, a towel and any medication you may need (e.g. inhaler)" }
     ] : [
@@ -397,6 +399,33 @@
     });
   }
 
+  // Calendly booking calendar, pre-filled with their name and email
+  function showBooking(data) {
+    var base = (config.business || {}).freeTasterBookingUrl;
+    var card = document.getElementById("free-booking");
+    if (!base || !card) return;
+    var params = new URLSearchParams({
+      embed_type: "Inline",
+      embed_domain: window.location.hostname || "localhost",
+      hide_gdpr_banner: "1",
+      name: data.full_name || "",
+      email: data.email || ""
+    });
+    var iframe = document.createElement("iframe");
+    iframe.src = base + "?" + params.toString();
+    iframe.title = "Book your free taster session";
+    iframe.loading = "lazy";
+    card.querySelector(".booking-frame").appendChild(iframe);
+    document.getElementById("booking-link").href = base + "?" + new URLSearchParams({ name: data.full_name || "", email: data.email || "" }).toString();
+    if (parqFlagged()) {
+      var note = document.createElement("p");
+      note.className = "notice notice-warn";
+      note.textContent = "You answered \"yes\" on the PAR-Q, so please get your GP's go-ahead before your first session. You can still book a time now.";
+      card.insertBefore(note, card.querySelector(".booking-frame"));
+    }
+    card.hidden = false;
+  }
+
   function showSuccess(data, items, message) {
     renderChecklist(items);
     document.querySelectorAll("[data-first-name]").forEach(function (el) {
@@ -407,6 +436,7 @@
       el.textContent = data.contact_method === "Email" ? "email" : data.contact_method;
     });
     if (message) document.getElementById("success-message").textContent = message;
+    if (FREE) showBooking(data);
 
     form.hidden = true;
     document.querySelector(".progress").hidden = true;

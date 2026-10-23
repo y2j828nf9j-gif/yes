@@ -10,7 +10,8 @@ window.KG_CONFIG = {
     name: "KnowledgeGainzz",
     trainer: "Leo",
     email: "KnowledgeGainzz1@gmail.com", // <-- your business email
-    location: "PureGym Giltbrook, Nottingham"
+    location: "PureGym Giltbrook, Nottingham",
+    freeTasterBookingUrl: "https://calendly.com/knowledgegainzz1/3" // <-- Calendly event for free taster sessions
   },
 
   social: {

@@ -380,6 +380,19 @@ p { margin: 0 0 1em; }
 .pricing-perks div { color: var(--muted); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.02em; }
 @media (min-width: 720px) { .pricing-perks { grid-template-columns: repeat(4, 1fr); } }
 
+/* ---------- free taster booking ---------- */
+
+.booking-card {
+  background: var(--surface); border: 1px solid var(--accent); border-radius: var(--radius);
+  padding: 22px 18px; margin: 24px 0; text-align: left;
+}
+.booking-card h3 { margin-top: 0; }
+.booking-frame iframe {
+  display: block; width: 100%; height: 1050px; border: 0;
+  border-radius: var(--radius-sm); background: #fff;
+}
+@media (min-width: 760px) { .booking-frame iframe { height: 720px; } }
+
 /* ---------- client results ---------- */
 
 .results-grid { display: grid; gap: 18px; }
