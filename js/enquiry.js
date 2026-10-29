@@ -15,7 +15,7 @@
 
   var config = window.KG_CONFIG || {};
   var FREE = new URLSearchParams(window.location.search).get("bundle") === "free";
-  var FREE_BUNDLE = "Lets Get Started!: 1 h 20 min 1:1 consultation followed by a taster session (first 20 people)";
+  var FREE_BUNDLE = "Lets Get Started!: 1 h 20 min 1:1 session, includes a consultation and a taster session (first 20 people)";
   var DRAFT_KEY = FREE ? "kg-enquiry-draft-free" : "kg-enquiry-draft";
   var EMAILJS_URL = "https://api.emailjs.com/api/v1.0/email/send";
   var BOOKING_NOTICE_DAYS = 4;
@@ -34,7 +34,7 @@
     intro.querySelector(".eyebrow").textContent = "Free 1 h 20 min session";
     intro.querySelector("h1").textContent = "Lets Get Started!";
     intro.querySelector("p:not(.eyebrow)").innerHTML =
-      "A free 1 h 20 min 1:1 session: a consultation, followed by a taster of what a PT session will be like. I'll ask for your details, a quick health check (PAR-Q), and a few questions about your goals and training so I can make the most of your session. " +
+      "A free 1 h 20 min 1:1 session that includes a consultation and a taster of what a PT session will be like. I'll ask for your details, a quick health check (PAR-Q), and a few questions about your goals and training so I can make the most of your session. " +
       "It takes about 5 minutes. Spots are limited to the first 20 people.";
     var alt = document.createElement("p");
     alt.className = "small muted";
