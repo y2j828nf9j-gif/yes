@@ -277,6 +277,92 @@
           </div>
         </fieldset>
 
+        <!-- BIG THREE BLUEPRINT ONLY: LIFT EXPERIENCE -->
+        <fieldset class="form-step" data-mode="blueprint" data-title="Your lifts">
+          <legend>2. Your squat, bench and deadlift</legend>
+          <p class="hint">Your 1RM is the most you can lift for one rep with good form. Leave it blank if you don't know or haven't tested it.</p>
+          <div class="lift-block">
+            <h3 class="lift-title">Squat</h3>
+            <div class="field">
+              <span class="label">How experienced are you with the squat? *</span>
+              <div class="choice-stack">
+                  <label class="option"><input type="radio" name="bp_squat_level" value="Never done it" required> <span><strong>Never done it</strong><small>Not tried it yet</small></span></label>
+                  <label class="option"><input type="radio" name="bp_squat_level" value="Beginner"> <span><strong>Beginner</strong><small>Still learning the technique</small></span></label>
+                  <label class="option"><input type="radio" name="bp_squat_level" value="Intermediate"> <span><strong>Intermediate</strong><small>Comfortable, train it regularly</small></span></label>
+                  <label class="option"><input type="radio" name="bp_squat_level" value="Advanced"> <span><strong>Advanced</strong><small>Years of consistent training</small></span></label>
+              </div>
+            </div>
+            <div class="field" data-show-when="bp_squat_level" data-show-values="Beginner,Intermediate,Advanced" data-optional>
+              <label for="bp_squat_1rm">Squat 1RM in kg (if you know it)</label>
+              <input id="bp_squat_1rm" name="bp_squat_1rm" type="number" min="0" max="500" step="0.5" inputmode="decimal" placeholder="e.g. 80">
+            </div>
+          </div>
+          <div class="lift-block">
+            <h3 class="lift-title">Bench press</h3>
+            <div class="field">
+              <span class="label">How experienced are you with the bench press? *</span>
+              <div class="choice-stack">
+                  <label class="option"><input type="radio" name="bp_bench_level" value="Never done it" required> <span><strong>Never done it</strong><small>Not tried it yet</small></span></label>
+                  <label class="option"><input type="radio" name="bp_bench_level" value="Beginner"> <span><strong>Beginner</strong><small>Still learning the technique</small></span></label>
+                  <label class="option"><input type="radio" name="bp_bench_level" value="Intermediate"> <span><strong>Intermediate</strong><small>Comfortable, train it regularly</small></span></label>
+                  <label class="option"><input type="radio" name="bp_bench_level" value="Advanced"> <span><strong>Advanced</strong><small>Years of consistent training</small></span></label>
+              </div>
+            </div>
+            <div class="field" data-show-when="bp_bench_level" data-show-values="Beginner,Intermediate,Advanced" data-optional>
+              <label for="bp_bench_1rm">Bench press 1RM in kg (if you know it)</label>
+              <input id="bp_bench_1rm" name="bp_bench_1rm" type="number" min="0" max="500" step="0.5" inputmode="decimal" placeholder="e.g. 80">
+            </div>
+          </div>
+          <div class="lift-block">
+            <h3 class="lift-title">Deadlift</h3>
+            <div class="field">
+              <span class="label">How experienced are you with the deadlift? *</span>
+              <div class="choice-stack">
+                  <label class="option"><input type="radio" name="bp_deadlift_level" value="Never done it" required> <span><strong>Never done it</strong><small>Not tried it yet</small></span></label>
+                  <label class="option"><input type="radio" name="bp_deadlift_level" value="Beginner"> <span><strong>Beginner</strong><small>Still learning the technique</small></span></label>
+                  <label class="option"><input type="radio" name="bp_deadlift_level" value="Intermediate"> <span><strong>Intermediate</strong><small>Comfortable, train it regularly</small></span></label>
+                  <label class="option"><input type="radio" name="bp_deadlift_level" value="Advanced"> <span><strong>Advanced</strong><small>Years of consistent training</small></span></label>
+              </div>
+            </div>
+            <div class="field" data-show-when="bp_deadlift_level" data-show-values="Beginner,Intermediate,Advanced" data-optional>
+              <label for="bp_deadlift_1rm">Deadlift 1RM in kg (if you know it)</label>
+              <input id="bp_deadlift_1rm" name="bp_deadlift_1rm" type="number" min="0" max="500" step="0.5" inputmode="decimal" placeholder="e.g. 80">
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- BIG THREE BLUEPRINT ONLY: AVAILABILITY -->
+        <fieldset class="form-step" data-mode="blueprint" data-title="Availability">
+          <legend>3. Availability</legend>
+          <p class="hint">The programme is 3 sessions a week for 8 weeks at PureGym Giltbrook.</p>
+          <div class="field">
+            <span class="label">Which days can you train? (choose all that apply) *</span>
+            <div class="choice-row" data-group-required="bp_days">
+              <label class="chip"><input type="checkbox" name="bp_days" value="Monday"> Mon</label>
+              <label class="chip"><input type="checkbox" name="bp_days" value="Tuesday"> Tue</label>
+              <label class="chip"><input type="checkbox" name="bp_days" value="Wednesday"> Wed</label>
+              <label class="chip"><input type="checkbox" name="bp_days" value="Thursday"> Thu</label>
+              <label class="chip"><input type="checkbox" name="bp_days" value="Friday"> Fri</label>
+              <label class="chip"><input type="checkbox" name="bp_days" value="Saturday"> Sat</label>
+              <label class="chip"><input type="checkbox" name="bp_days" value="Sunday"> Sun</label>
+            </div>
+            <p class="error-msg" data-error-for="bp_days" hidden>Please pick at least one day.</p>
+          </div>
+          <div class="field">
+            <span class="label">What times suit you? (choose all that apply) *</span>
+            <div class="choice-row" data-group-required="bp_times">
+              <label class="chip"><input type="checkbox" name="bp_times" value="Early morning (before 9am)"> Early morning (before 9am)</label>
+              <label class="chip"><input type="checkbox" name="bp_times" value="Daytime (9am to 5pm)"> Daytime (9am&ndash;5pm)</label>
+              <label class="chip"><input type="checkbox" name="bp_times" value="Evening (after 5pm)"> Evening (after 5pm)</label>
+            </div>
+            <p class="error-msg" data-error-for="bp_times" hidden>Please pick at least one time.</p>
+          </div>
+          <div class="field">
+            <label for="bp_availability_notes">Anything else about when you can train?</label>
+            <textarea id="bp_availability_notes" name="bp_availability_notes" rows="2" placeholder="e.g. shifts change weekly, can't do Fridays after 6pm"></textarea>
+          </div>
+        </fieldset>
+
         <!-- STEP 3: EXPERIENCE & ACTIVITY -->
         <fieldset class="form-step" data-step="3" data-title="Experience & activity">
           <legend>3. Experience &amp; current activity</legend>
@@ -459,11 +545,11 @@
           </div>
           <label class="consent">
             <input type="checkbox" name="consent_accuracy" required>
-            <span>I confirm that my answers, including the PAR-Q, are accurate to the best of my knowledge, and I'll tell Leo if anything changes. *</span>
+            <span data-consent-accuracy>I confirm that my answers, including the PAR-Q, are accurate to the best of my knowledge, and I'll tell Leo if anything changes. *</span>
           </label>
           <label class="consent">
             <input type="checkbox" name="consent_data" required>
-            <span>I agree to KnowledgeGainzz storing my answers, including health information, to assess and plan my training, as described in the <a href="privacy.html" target="_blank">privacy notice</a>. *</span>
+            <span data-consent-data>I agree to KnowledgeGainzz storing my answers, including health information, to assess and plan my training, as described in the <a href="privacy.html" target="_blank">privacy notice</a>. *</span>
           </label>
           <label class="consent">
             <input type="checkbox" name="consent_marketing">

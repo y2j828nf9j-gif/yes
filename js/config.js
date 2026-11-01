@@ -11,7 +11,8 @@ window.KG_CONFIG = {
     trainer: "Leo",
     email: "KnowledgeGainzz1@gmail.com", // <-- your business email
     location: "PureGym Giltbrook, Nottingham",
-    freeTasterBookingUrl: "https://calendly.com/knowledgegainzz1/3" // <-- Calendly event for free taster sessions
+    freeTasterBookingUrl: "https://calendly.com/knowledgegainzz1/3", // <-- Calendly event for free taster sessions
+    blueprintOpen: false // <-- set to true to open The Big Three Blueprint sign-up form
   },
 
   social: {

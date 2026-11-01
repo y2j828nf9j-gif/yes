@@ -14,23 +14,42 @@
   if (!form) return;
 
   var config = window.KG_CONFIG || {};
-  var FREE = new URLSearchParams(window.location.search).get("bundle") === "free";
+  var BUNDLE = new URLSearchParams(window.location.search).get("bundle");
+  var FREE = BUNDLE === "free";
+  var BLUEPRINT = BUNDLE === "blueprint";
   var FREE_BUNDLE = "Lets Get Started!: 1 h 20 min 1:1 session, includes a consultation and a taster session (first 20 people)";
-  var DRAFT_KEY = FREE ? "kg-enquiry-draft-free" : "kg-enquiry-draft";
+  var BLUEPRINT_BUNDLE = "The Big Three Blueprint: 8 weeks, 3 x 1:1 sessions a week, £315 (only 10 spots)";
+  var DRAFT_KEY = FREE ? "kg-enquiry-draft-free" : BLUEPRINT ? "kg-enquiry-draft-blueprint" : "kg-enquiry-draft";
   var EMAILJS_URL = "https://api.emailjs.com/api/v1.0/email/send";
   var BOOKING_NOTICE_DAYS = 4;
 
+  var intro = document.querySelector(".form-intro");
+
+  // The Big Three Blueprint isn't on sale yet: keep the form closed until it launches
+  if (BLUEPRINT && !(config.business || {}).blueprintOpen) {
+    document.title = "The Big Three Blueprint | KnowledgeGainzz Personal Training";
+    intro.querySelector(".eyebrow").textContent = "Coming soon";
+    intro.querySelector("h1").textContent = "The Big Three Blueprint";
+    intro.querySelector("p:not(.eyebrow)").innerHTML =
+      'Sign-ups aren\'t open yet. Check back soon, or <a href="index.html#pricing">see the other packages</a>.';
+    form.hidden = true;
+    document.querySelector(".progress").hidden = true;
+    return;
+  }
+
   // Free taster: details, PAR-Q, then its own short goals + training history steps
-  // in place of the full form's experience, goals and nutrition steps
+  // in place of the full form's experience, goals and nutrition steps.
+  // Big Three Blueprint: details, lift experience and availability only.
   var dropSelector = FREE
-    ? '.form-step[data-step="3"], .form-step[data-step="4"], .form-step[data-step="5"]'
-    : '.form-step[data-mode="free"]';
+    ? '.form-step[data-step="3"], .form-step[data-step="4"], .form-step[data-step="5"], .form-step[data-mode="blueprint"]'
+    : BLUEPRINT
+      ? '.form-step[data-step="2"], .form-step[data-step="3"], .form-step[data-step="4"], .form-step[data-step="5"], .form-step[data-mode="free"]'
+      : '.form-step[data-mode="free"], .form-step[data-mode="blueprint"]';
   form.querySelectorAll(dropSelector).forEach(function (fs) { fs.remove(); });
   if (FREE) {
     var reviewLegend = form.querySelector('.form-step[data-step="6"] legend');
     if (reviewLegend) reviewLegend.textContent = "5. Review & send";
     document.title = "Lets Get Started! | KnowledgeGainzz Personal Training";
-    var intro = document.querySelector(".form-intro");
     intro.querySelector(".eyebrow").textContent = "Free 1 h 20 min session";
     intro.querySelector("h1").textContent = "Lets Get Started!";
     intro.querySelector("p:not(.eyebrow)").innerHTML =
@@ -40,6 +59,19 @@
     alt.className = "small muted";
     alt.innerHTML = 'Looking for a paid package? <a href="enquire.html">Use the full enquiry form</a>.';
     intro.appendChild(alt);
+  }
+  if (BLUEPRINT) {
+    form.querySelector('.form-step[data-step="6"] legend').textContent = "4. Review & send";
+    form.querySelector("[data-consent-accuracy]").textContent =
+      "I confirm that my answers are accurate to the best of my knowledge, and I'll tell Leo if anything changes. *";
+    form.querySelector("[data-consent-data]").innerHTML =
+      'I agree to KnowledgeGainzz storing my answers to assess and plan my training, as described in the <a href="privacy.html" target="_blank">privacy notice</a>. *';
+    document.title = "The Big Three Blueprint | KnowledgeGainzz Personal Training";
+    intro.querySelector(".eyebrow").textContent = "8-week programme · only 10 spots";
+    intro.querySelector("h1").textContent = "The Big Three Blueprint";
+    intro.querySelector("p:not(.eyebrow)").innerHTML =
+      "8 weeks, 3 sessions a week, built around the squat, bench press and deadlift. I'll ask for your details, your experience with each lift (and your 1RM if you know it) and when you can train. " +
+      "It takes about 2 minutes. Only 10 spots are available.";
   }
 
   var steps = Array.prototype.slice.call(form.querySelectorAll(".form-step"));
@@ -108,11 +140,25 @@
       ["lift_row", "Row"], ["lift_pullup", "Pull-up"]
     ]]
   ];
+  var BLUEPRINT_SECTIONS = [
+    ["Your lifts", [
+      ["bp_squat_level", "Squat experience"], ["bp_squat_1rm", "Squat 1RM (kg)"],
+      ["bp_bench_level", "Bench experience"], ["bp_bench_1rm", "Bench 1RM (kg)"],
+      ["bp_deadlift_level", "Deadlift experience"], ["bp_deadlift_1rm", "Deadlift 1RM (kg)"]
+    ]],
+    ["Availability", [
+      ["bp_days", "Days"], ["bp_times", "Times"], ["bp_availability_notes", "Notes"]
+    ]]
+  ];
   var SUMMARY_SECTIONS = FREE
     ? [["Bundle", [["package_interest", "Bundle"]]], SECTIONS[0], SECTIONS[1]].concat(FREE_SECTIONS, [SECTIONS[5]])
-    : SECTIONS;
+    : BLUEPRINT
+      ? [["Programme", [["package_interest", "Programme"]]], SECTIONS[0]].concat(BLUEPRINT_SECTIONS, [SECTIONS[5]])
+      : SECTIONS;
   // Review sections line up with step indexes so each "Edit" jumps to the right step
-  var REVIEW_SECTIONS = FREE ? SECTIONS.slice(0, 2).concat(FREE_SECTIONS) : SECTIONS.slice(0, 5);
+  var REVIEW_SECTIONS = FREE ? SECTIONS.slice(0, 2).concat(FREE_SECTIONS)
+    : BLUEPRINT ? [SECTIONS[0]].concat(BLUEPRINT_SECTIONS)
+    : SECTIONS.slice(0, 5);
 
   /* ---------- helpers ---------- */
 
@@ -126,6 +172,7 @@
     // Unticked checkboxes aren't in FormData
     data.consent_marketing = form.elements.consent_marketing.checked ? "Yes" : "No";
     if (FREE) data.package_interest = FREE_BUNDLE;
+    if (BLUEPRINT) data.package_interest = BLUEPRINT_BUNDLE;
     return data;
   }
 
@@ -163,10 +210,12 @@
       var values = field.getAttribute("data-show-values").split(",");
       var show = values.indexOf(radioValue(field.getAttribute("data-show-when"))) !== -1;
       field.hidden = !show;
+      if (field.hasAttribute("data-optional")) return;
       field.querySelectorAll("input, textarea, select").forEach(function (el) { el.required = show; });
     });
 
     // PAR-Q: any "yes" reveals the details box and makes it required
+    if (BLUEPRINT) return; // no PAR-Q step on the Big Three Blueprint form
     var flagged = parqFlagged();
     document.getElementById("parq-flag").hidden = !flagged;
     document.getElementById("parq-details-field").hidden = !flagged;
@@ -319,6 +368,11 @@
         : { text: "Reply to Leo's message with the day and time that suits you for your free 1 h 20 min session at PureGym Giltbrook" },
       { text: "Make sure you have gym access at PureGym Giltbrook (membership or day pass)" },
       { text: "Bring to your first session: water bottle, trainers, a towel and any medication you may need (e.g. inhaler)" }
+    ] : BLUEPRINT ? [
+      { done: true, text: "The Big Three Blueprint sign-up submitted" },
+      { text: "Leo will confirm your spot (only 10 available) and your 3 weekly session times" },
+      { text: "Make sure you have gym access at PureGym Giltbrook (membership or day pass)" },
+      { text: "Bring to your first session: water bottle, flat trainers, a towel and any medication you may need (e.g. inhaler)" }
     ] : [
       { done: true, text: "Enquiry and PAR-Q health questionnaire submitted" },
       { text: "Reply to Leo's message with 2–3 times that suit you for a free consultation at PureGym Giltbrook" },
@@ -479,7 +533,7 @@
 
     if (!isEmailjsConfigured()) {
       // Fallback: open the client's email app addressed to Leo
-      var subject = (FREE ? "Lets Get Started! claim: " : "PT enquiry: ") + data.full_name + (flagged ? " (PAR-Q flagged)" : "");
+      var subject = (FREE ? "Lets Get Started! claim: " : BLUEPRINT ? "Big Three Blueprint sign-up: " : "PT enquiry: ") + data.full_name + (flagged ? " (PAR-Q flagged)" : "");
       window.location.href = "mailto:" + business.email +
         "?subject=" + encodeURIComponent(subject) +
         "&body=" + encodeURIComponent(summary);
@@ -500,7 +554,7 @@
       social_handle: data.social_handle || "N/A",
       goals: data.goals || [data.primary_goal, data.secondary_goals].filter(Boolean).join(", "),
       package_interest: data.package_interest || "Not sure — recommend one",
-      parq_status: flagged ? "FLAGGED: GP clearance may be required" : "All clear",
+      parq_status: BLUEPRINT ? "Big Three Blueprint, no PAR-Q asked" : flagged ? "FLAGGED: GP clearance may be required" : "All clear",
       checklist: checklistText(items),
       next_steps: nextStepsText(items),
       submitted_at: new Date().toLocaleString("en-GB"),
@@ -514,11 +568,13 @@
     var clientParams = Object.assign({}, shared, {
       summary: summary,
       reply_to: business.email,
-      booking_line: FREE ? "book in your free session" : "book your free consultation",
+      booking_line: FREE ? "book in your free session" : BLUEPRINT ? "confirm your spot and session times" : "book your free consultation",
       package_note: FREE
         ? "Spots are limited to the first 20 people, so I'll confirm yours when I get in touch."
-        : "Nothing is confirmed until after your free consultation.",
-      parq_note: flagged
+        : BLUEPRINT
+          ? "Only 10 spots are available, so I'll confirm yours when I get in touch."
+          : "Nothing is confirmed until after your free consultation.",
+      parq_note: BLUEPRINT ? "" : flagged
         ? "Because you answered \"yes\" to at least one PAR-Q question, please get written confirmation from your GP that you're fine to start exercising before your first session."
         : "Your PAR-Q came back all clear, so you're good to go."
     });

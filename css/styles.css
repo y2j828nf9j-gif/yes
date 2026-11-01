@@ -587,6 +587,14 @@ input[type="radio"], input[type="checkbox"] { accent-color: var(--accent); width
 .option small { display: block; color: var(--muted); font-size: 0.85rem; }
 .option:has(input:checked) { border-color: var(--accent); background: rgba(200, 245, 66, 0.06); }
 
+/* Big Three Blueprint lift questions */
+.lift-block {
+  background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  padding: 16px; margin-top: 16px;
+}
+.lift-title { font-family: var(--font-display); font-size: 1.3rem; text-transform: uppercase; margin: 0 0 12px; }
+.lift-block .field:last-child { margin-bottom: 0; }
+
 /* PAR-Q */
 .parq { display: grid; gap: 12px; margin: 20px 0; }
 .parq-q {
