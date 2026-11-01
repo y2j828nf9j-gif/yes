@@ -27,6 +27,7 @@
   --tier-physique: #b262e8;
   --tier-athlete: #4fd87a;
   --tier-group: #e85ba8;
+  --tier-blueprint: #ff8a3d;
 
   --font-display: "Anton", "Arial Narrow", Impact, sans-serif;
   --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -334,6 +335,7 @@ p { margin: 0 0 1em; }
 .price-card.tier-athlete { --tier: var(--tier-athlete); }
 .price-card.tier-group { --tier: var(--tier-group); }
 .price-card.tier-free { --tier: var(--accent); }
+.price-card.tier-blueprint { --tier: var(--tier-blueprint); }
 
 .card-tag-right { left: auto; right: 22px; }
 .price-card-free { grid-column: 1 / -1; padding-top: 32px; }
@@ -344,6 +346,39 @@ p { margin: 0 0 1em; }
   .price-free-foot { grid-template-columns: 1fr auto; align-items: stretch; }
   .price-free-foot .btn { display: flex; align-items: center; }
 }
+
+/* wide card (spans the grid) */
+.price-card-wide { grid-column: 1 / -1; padding-top: 32px; }
+@media (min-width: 680px) {
+  .price-card-wide .price-features { grid-template-columns: repeat(2, 1fr); column-gap: 24px; }
+}
+
+/* coming soon: greyed out and not clickable until launch */
+.price-card-soon { pointer-events: none; user-select: none; border-top-color: var(--muted); }
+.price-card-soon > :not(.card-tag-soon) { filter: grayscale(1); opacity: 0.45; }
+.card-tag-soon { background: var(--muted); color: var(--accent-ink); }
+.btn-disabled { cursor: not-allowed; }
+
+/* big three blueprint */
+.blueprint-phases {
+  list-style: none; padding: 0; margin: 4px 0 20px;
+  display: grid; gap: 8px; grid-template-columns: repeat(2, 1fr);
+}
+@media (min-width: 680px) { .blueprint-phases { grid-template-columns: repeat(4, 1fr); } }
+.blueprint-phases li {
+  background: var(--bg); border: 1px solid var(--border); border-left: 3px solid var(--tier);
+  border-radius: var(--radius-sm); padding: 10px 12px;
+}
+.phase-weeks { display: block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.phase-name { display: block; font-family: var(--font-display); font-size: 1.1rem; text-transform: uppercase; color: var(--text); }
+.blueprint-prices { display: grid; gap: 12px; }
+.blueprint-prices .btn { justify-content: center; text-align: center; }
+@media (min-width: 680px) {
+  .blueprint-prices { grid-template-columns: 1fr 1fr auto; align-items: stretch; }
+  .blueprint-prices .btn { display: flex; align-items: center; }
+}
+.price-was { display: block; font-size: 0.9rem; color: var(--muted); text-decoration: line-through; margin-bottom: 4px; }
+.price-tag-winner { border-top-style: dashed; }
 
 .price-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
 .price-name {
