@@ -25,13 +25,17 @@
 
   var intro = document.querySelector(".form-intro");
 
-  // The Big Three Blueprint isn't on sale yet: keep the form closed until it launches
-  if (BLUEPRINT && !(config.business || {}).blueprintOpen) {
+  // The Big Three Blueprint: closed until it launches, and again once the offer ends
+  var offerEnds = (config.business || {}).blueprintOfferEnds;
+  var offerOver = offerEnds && new Date() > new Date(offerEnds + "T23:59:59");
+  if (BLUEPRINT && (!(config.business || {}).blueprintOpen || offerOver)) {
     document.title = "The Big Three Blueprint | KnowledgeGainzz Personal Training";
-    intro.querySelector(".eyebrow").textContent = "Coming soon";
+    intro.querySelector(".eyebrow").textContent = offerOver ? "Offer ended" : "Coming soon";
     intro.querySelector("h1").textContent = "The Big Three Blueprint";
-    intro.querySelector("p:not(.eyebrow)").innerHTML =
-      'Sign-ups aren\'t open yet. Check back soon, or <a href="index.html#pricing">see the other packages</a>.';
+    intro.querySelector("p:not(.eyebrow)").innerHTML = (offerOver
+      ? "This offer ended on Friday 6th November. "
+      : "Sign-ups aren't open yet. Check back soon, or ") +
+      '<a href="index.html#pricing">' + (offerOver ? "See the other packages" : "see the other packages") + "</a>.";
     form.hidden = true;
     document.querySelector(".progress").hidden = true;
     return;
@@ -71,7 +75,7 @@
     intro.querySelector("h1").textContent = "The Big Three Blueprint";
     intro.querySelector("p:not(.eyebrow)").innerHTML =
       "8 weeks, 3 sessions a week, built around the squat, bench press and deadlift. I'll ask for your details, your experience with each lift (and your 1RM if you know it) and when you can train. " +
-      "It takes about 2 minutes. Only 10 spots are available.";
+      "It takes about 2 minutes. Only 10 spots are available, and the offer ends Friday 6th November.";
   }
 
   var steps = Array.prototype.slice.call(form.querySelectorAll(".form-step"));
@@ -572,7 +576,7 @@
       package_note: FREE
         ? "Spots are limited to the first 20 people, so I'll confirm yours when I get in touch."
         : BLUEPRINT
-          ? "Only 10 spots are available, so I'll confirm yours when I get in touch."
+          ? "Only 10 spots are available and the offer ends Friday 6th November, so I'll confirm yours when I get in touch."
           : "Nothing is confirmed until after your free consultation.",
       parq_note: BLUEPRINT ? "" : flagged
         ? "Because you answered \"yes\" to at least one PAR-Q question, please get written confirmation from your GP that you're fine to start exercising before your first session."

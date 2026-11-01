@@ -379,6 +379,10 @@ p { margin: 0 0 1em; }
 }
 .price-was { display: block; font-size: 0.9rem; color: var(--muted); text-decoration: line-through; margin-bottom: 4px; }
 .price-tag-winner { border-top-style: dashed; }
+.offer-ends {
+  margin: 0 0 12px; text-align: center; font-weight: 700; font-size: 0.85rem;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--tier);
+}
 
 .price-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
 .price-name {
