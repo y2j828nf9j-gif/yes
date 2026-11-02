@@ -18,7 +18,7 @@
   var FREE = BUNDLE === "free";
   var BLUEPRINT = BUNDLE === "blueprint";
   var FREE_BUNDLE = "Lets Get Started!: 1 h 20 min 1:1 session, includes a consultation and a taster session (first 20 people)";
-  var BLUEPRINT_BUNDLE = "The Big Three Blueprint: 8 weeks, 3 x 1:1 sessions a week, £315 (only 10 spots)";
+  var BLUEPRINT_BUNDLE = "The Big Three Blueprint: 8 weeks, 1 x 1:1 session a week, £149 (only 10 spots)";
   var DRAFT_KEY = FREE ? "kg-enquiry-draft-free" : BLUEPRINT ? "kg-enquiry-draft-blueprint" : "kg-enquiry-draft";
   var EMAILJS_URL = "https://api.emailjs.com/api/v1.0/email/send";
   var BOOKING_NOTICE_DAYS = 4;
@@ -74,7 +74,7 @@
     intro.querySelector(".eyebrow").textContent = "8-week programme · only 10 spots";
     intro.querySelector("h1").textContent = "The Big Three Blueprint";
     intro.querySelector("p:not(.eyebrow)").innerHTML =
-      "8 weeks, 3 sessions a week, built around the squat, bench press and deadlift. I'll ask for your details, your experience with each lift (and your 1RM if you know it) and when you can train. " +
+      "8 weeks, 1 coached session a week, built around the squat, bench press and deadlift. I'll ask for your details, your experience with each lift (and your 1RM if you know it) and when you can train. " +
       "It takes about 2 minutes. Only 10 spots are available, and the offer ends Friday 6th November.";
   }
 
@@ -374,7 +374,7 @@
       { text: "Bring to your first session: water bottle, trainers, a towel and any medication you may need (e.g. inhaler)" }
     ] : BLUEPRINT ? [
       { done: true, text: "The Big Three Blueprint sign-up submitted" },
-      { text: "Leo will confirm your spot (only 10 available) and your 3 weekly session times" },
+      { text: "Leo will confirm your spot (only 10 available) and your weekly session time" },
       { text: "Make sure you have gym access at PureGym Giltbrook (membership or day pass)" },
       { text: "Bring to your first session: water bottle, flat trainers, a towel and any medication you may need (e.g. inhaler)" }
     ] : [
